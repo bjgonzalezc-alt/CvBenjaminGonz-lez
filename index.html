@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV — Benjamín Josué González Cándido</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ================== TEMA ESMERALDA / CIAN ================== */
+    :root{
+      --bg:#061013;
+      --panel:rgba(8,22,26,.65);
+      --card:rgba(7,16,20,.58);
+      --text:#e8fbff;
+      --muted:#a7c6cf;
+      --accent:#22d3ee;     /* cian */
+      --accent2:#00e09d;    /* esmeralda */
+      --accent3:#f59e0b;    /* ámbar (detalles) */
+      --border:rgba(255,255,255,.12);
+      --shadow:0 18px 50px rgba(0,0,0,.55);
+      --grad-1: conic-gradient(from 0deg at 50% 50%, #22d3ee, #00e09d, #f59e0b, #22d3ee);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      color:var(--text);
+      background:
+        radial-gradient(70rem 46rem at 15% -10%, rgba(34,211,238,.18), transparent 60%),
+        radial-gradient(62rem 42rem at 110% 120%, rgba(0,224,157,.16), transparent 60%),
+        var(--bg);
+      -webkit-print-color-adjust:exact; print-color-adjust:exact;
+      padding:34px 18px 46px;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* Auras */
+    .back-aura{position:fixed;inset:-20vh -20vw auto auto;width:55vw;height:55vh;z-index:-1;filter:blur(70px) saturate(140%);opacity:.55;background:radial-gradient(closest-side, rgba(0,224,157,.35), transparent 60%);animation:float 18s ease-in-out infinite alternate}
+    .back-aura.b2{inset:auto auto -25vh -18vw;width:48vw;height:48vh;background:radial-gradient(closest-side, rgba(34,211,238,.35), transparent 60%);animation-duration:22s}
+    @keyframes float{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(2vw,-2vh,0) scale(1.06)}}
+
+    .wrap{max-width:1100px;margin:auto}
+
+    /* ===== Encabezado ===== */
+    .hero{
+      position:relative;
+      display:grid;grid-template-columns:190px 1fr auto;gap:22px;align-items:center;
+      padding:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)), var(--panel);
+      border:1px solid var(--border); border-radius:26px; box-shadow:var(--shadow);
+      isolation:isolate;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:-2px; border-radius:28px; z-index:-1;
+      background:var(--grad-1); filter:blur(10px) saturate(140%); opacity:.55;
+      animation: spin 12s linear infinite;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      padding:2px;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .avatar{
+      width:190px;height:190px;border-radius:20px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:
+        0 0 0 4px rgba(34,211,238,.10),
+        0 18px 44px rgba(0,0,0,.55),
+        0 0 36px -10px rgba(0,224,157,.35);
+      background:radial-gradient(120px 120px at 70% 20%, rgba(0,224,157,.20), transparent 60%), #07151a;
+      display:flex;align-items:center;justify-content:center;
+      position:relative;
+    }
+    .avatar::after{content:"";position:absolute;inset:0;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02))}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;animation:fade .7s ease .05s forwards}
+    @keyframes fade{to{opacity:1}}
+
+    h1{margin:0;font-family:'Playfair Display',serif;font-size:clamp(30px,4.8vw,54px);line-height:1.06}
+    .subtitle{color:var(--muted);margin-top:4px;font-weight:600}
+
+    .contact{
+      display:grid;grid-template-columns:repeat(2, max-content);gap:10px 14px;align-items:center;
+      color:#cffafe;font-weight:700;
+    }
+    .tag{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(34,211,238,.35);
+      padding:8px 12px;border-radius:999px;text-decoration:none;color:inherit;white-space:nowrap;
+    }
+
+    .btn{
+      background:linear-gradient(135deg,#00e09d 0%, #22d3ee 50%, #f59e0b 100%);
+      border:0;border-radius:14px;padding:11px 18px;color:#041b1b;font-weight:900;cursor:pointer;
+      box-shadow:0 8px 24px rgba(0,224,157,.25);
+    }
+
+    /* ===== Contenido ===== */
+    .grid{display:grid;grid-template-columns:340px 1fr;gap:24px;margin-top:24px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)), var(--card);
+      border:1px solid var(--border); border-radius:18px; padding:20px; box-shadow:var(--shadow); position:relative;
+    }
+    h2{
+      text-transform:uppercase;font-size:12.5px;letter-spacing:1.6px;margin:0 0 12px 0;
+      background:linear-gradient(90deg, #22d3ee, #00e09d); -webkit-background-clip:text; background-clip:text; color:transparent;
+      filter: drop-shadow(0 0 5px rgba(34,211,238,.25));
+    }
+
+    /* Tablas info limpia (mejor en PDF) */
+    .kv{width:100%;border-collapse:collapse;font-size:14px}
+    .kv th,.kv td{padding:6px 8px;border-bottom:1px dashed rgba(255,255,255,.12);vertical-align:top}
+    .kv th{color:var(--muted);font-weight:600;width:38%}
+    .kv td{font-weight:750}
+
+    /* Habilidades / badges */
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;padding:7px 10px;font-size:13px;
+      box-shadow: inset 0 0 14px rgba(34,211,238,.14);
+    }
+
+    .message{
+      background:linear-gradient(180deg, rgba(34,211,238,.08), rgba(0,224,157,.06));
+      border:1px solid rgba(34,211,238,.18);
+      border-radius:14px;padding:14px 16px;margin-bottom:16px;
+      box-shadow: inset 0 0 26px rgba(34,211,238,.10)
+    }
+    .message strong{display:block;margin-bottom:6px;background:linear-gradient(90deg,#22d3ee,#00e09d);-webkit-background-clip:text;color:transparent}
+
+    .timeline{display:flex;flex-direction:column;gap:14px}
+    .t-item{position:relative;padding-left:18px;page-break-inside:avoid}
+    .t-item::before{content:'';position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:50%;background: radial-gradient(circle at 30% 30%, #fff, #22d3ee);box-shadow:0 0 0 3px rgba(34,211,238,.18), 0 0 18px rgba(34,211,238,.45)}
+    .t-title{font-weight:800}
+    .t-sub{color:var(--muted);font-size:14px;margin-top:3px}
+    .t-body{margin-top:6px}
+    .t-body ul{margin:6px 0 0 18px}
+    .t-body li{margin-bottom:6px}
+
+    .refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+    .ref-card{border:1px dashed rgba(255,255,255,.18);border-radius:12px;padding:12px;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));color:#d9fbff}
+
+    /* ===== Diseño responsivo ===== */
+    @media (max-width:920px){
+      .hero{grid-template-columns:1fr; text-align:center}
+      .grid{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr;justify-items:center}
+    }
+
+    /* ===== Optimización para PDF/Impresión ===== */
+    @media print{
+      @page{ margin:16mm }
+      body{background:#fff;color:#111;padding:0}
+      .back-aura{display:none}
+      .hero,.card{box-shadow:none;border:1px solid #dbeafe;background:#fff}
+      .btn{display:none}
+      .tag,.badge{box-shadow:none}
+      .hero::before{display:none}
+      .subtitle{color:#374151}
+      .grid{grid-template-columns:1fr}               /* una columna para legibilidad */
+      h1{color:#0f172a}
+      h2{-webkit-background-clip:initial;background:initial;color:#065f46} /* títulos verde oscuro */
+      .kv th,.kv td{border-bottom:1px solid #e5e7eb;color:#111}
+      .ref-card{border-color:#e5e7eb;background:#fff;color:#111}
+      .message{background:#f0fdf4;border-color:#bbf7d0;color:#052e2b}
+      .section-break{page-break-before:always}      /* fuerza salto si se usa */
+      a[href^="mailto:"], a[href^="tel:"]{text-decoration:none;color:#111}
+    }
+  </style>
+</head>
+<body>
+  <!-- Auras -->
+  <div class="back-aura"></div>
+  <div class="back-aura b2"></div>
+
+  <div class="wrap">
+    <!-- ============ ENCABEZADO ============ -->
+    <header class="hero">
+      <!-- FOTO con fallbacks -->
+      <div class="avatar" aria-label="Foto de perfil">
+        <img
+          id="fotoPerfil"
+          src="foto.jpg"
+          alt="Foto de perfil — Benjamín Josué González Cándido"
+          loading="lazy" decoding="async" referrerpolicy="no-referrer"
+          onerror="
+            if (!this.dataset.try1) {
+              this.dataset.try1 = 1;
+              this.src='https://drive.google.com/uc?id=1Rhl4iKJH94Ry1hYxRAJlaD-6M_AJ84sx&export=view';
+            } else if (!this.dataset.try2) {
+              this.dataset.try2 = 1;
+              this.src='https://drive.google.com/uc?export=download&id=1Rhl4iKJH94Ry1hYxRAJlaD-6M_AJ84sx';
+            } else if (!this.dataset.try3) {
+              this.dataset.try3 = 1;
+              this.src='https://drive.google.com/thumbnail?id=1Rhl4iKJH94Ry1hYxRAJlaD-6M_AJ84sx&sz=w1000';
+            } else {
+              this.style.display='none';
+              this.parentElement.style.background='linear-gradient(135deg,#0b2a2a,#041616)';
+              this.parentElement.title='No se pudo cargar la imagen';
+            }
+          ">
+      </div>
+
+      <!-- Nombre + subtítulo -->
+      <div>
+        <h1>Benjamín Josué González Cándido</h1>
+        <div class="subtitle">Estudiante de Ingeniería en Sistemas y Ciencias de la Computación</div>
+      </div>
+
+      <!-- Contacto compacto (se ve perfecto en PDF) -->
+      <div class="contact">
+        <a class="tag" href="mailto:bennygonza2004@gmail.com">bennygonza2004@gmail.com</a>
+        <a class="tag" href="tel:+50245495038">+502 4549-5038</a>
+        <span class="tag">San Lucas Sacatepéquez, Guatemala</span>
+        <button class="btn" onclick="window.print()">Imprimir / PDF</button>
+      </div>
+    </header>
+
+    <!-- ============ CUERPO ============ -->
+    <main class="grid">
+      <!-- Columna izquierda: Datos + Idiomas + Fortalezas -->
+      <aside class="card">
+        <h2>Datos personales</h2>
+        <table class="kv">
+          <tr><th>DPI</th><td>3019275290101</td></tr>
+          <tr><th>Estado civil</th><td>Soltero</td></tr>
+          <tr><th>Nacionalidad</th><td>Guatemalteco</td></tr>
+          <tr><th>Dirección</th><td>Km. 26.5 Carretera Interamericana, Entrada al Cerro Alux, Casa No. 5, San Lucas Sacatepéquez</td></tr>
+          <tr><th>Teléfonos</th><td>Residencia: 4549-5038 · Celular: 4549-5038</td></tr>
+        </table>
+
+        <div class="section" style="margin-top:14px">
+          <h2>Idiomas</h2>
+          <table class="kv">
+            <tr><th>Español</th><td>Nativo</td></tr>
+            <tr><th>Inglés</th><td>90%</td></tr>
+          </table>
+        </div>
+
+        <div class="section">
+          <h2>Fortalezas</h2>
+          <div class="badges">
+            <span class="badge">Atención al cliente</span>
+            <span class="badge">Resolución de problemas</span>
+            <span class="badge">Liderazgo</span>
+            <span class="badge">Mejora de procesos</span>
+            <span class="badge">Trabajo bajo presión</span>
+            <span class="badge">Coaching</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Columna derecha: Resumen + Perfil + Educación + Experiencia + Cursos -->
+      <section class="card">
+        <div class="message">
+          <strong>Resumen profesional</strong>
+         Presento mi currículum con enfoque en el área de Ingeniería en Sistemas, destacando mi interés en el desarrollo de software, la administración de bases de datos y la ciberseguridad. Poseo experiencia en proyectos académicos y colaboraciones con empresas, donde he participado en el diseño e implementación de sitios web integrados a bases de datos y en el resguardo seguro de la información. Además, cuento con sólidos conocimientos en entornos Linux, fundamentos de hacking ético y controles de seguridad aplicados a sistemas web y móviles, incluyendo autenticación y cifrado de datos.
+        </div>
+
+        <div class="section">
+          <h2>Perfil</h2>
+          <div class="badge" style="display:block;padding:12px 14px;border-radius:12px">
+            Enfoque en soluciones tecnológicas con buenas prácticas. Experiencia en atención al cliente con métricas altas,
+            documentación, análisis y trabajo en equipo. Busco contribuir en desarrollo, bases de datos o seguridad con
+            aprendizaje continuo y enfoque en resultados.
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Educación</h2>
+          <div class="timeline">
+            <div class="t-item">
+              <div class="t-title">Universidad San Pablo de Guatemala</div>
+              <div class="t-sub">Ingeniería en Sistemas y CC. de la Computación — Ene 2024 · Actualidad</div>
+            </div>
+            <div class="t-item">
+              <div class="t-title">Centro Educativo Getsemaní</div>
+              <div class="t-sub">Bachillerato en Computación — Ene 2022 · Oct 2023</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Experiencia</h2>
+          <div class="timeline">
+            <div class="t-item">
+              <div class="t-title">Everise — Humana Pharmacy</div>
+              <div class="t-sub">Agente · SME — Nov 2023 · Actualidad</div>
+              <div class="t-body">
+                <ul>
+                  <li>Atención a usuarios de seguros/coberturas con enfoque en experiencia.</li>
+                  <li>Resolución de casos y propuestas de mejora bajo presión.</li>
+                  <li>Coaching a equipos (~10 personas) y soporte a KPIs.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="t-item">
+              <div class="t-title">Alorica — Walmart / T-Mobile</div>
+              <div class="t-sub">Asesor de soporte y ventas — Oct 2022 · Dic 2022 / Nov 2023</div>
+              <div class="t-body">
+                <ul>
+                  <li>Ventas de líneas y seguimiento de envíos.</li>
+                  <li>Manejo de información sensible y sistemas internos.</li>
+                  <li>Mejoras en tiempos de respuesta y resolución.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="t-item">
+              <div class="t-title">Experiencia técnica relevante</div>
+              <div class="t-sub">Proyectos académicos — Desarrollo, BD y Seguridad</div>
+              <div class="t-body">
+                <ul>
+                  <li>Web con bases de datos relacionales (diseño de esquemas y consultas).</li>
+                  <li>Integridad/normalización y prácticas de seguridad básica.</li>
+                  <li>Linux y fundamentos de pruebas de seguridad (ética).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Certificaciones & cursos</h2>
+          <table class="kv">
+            <tr><th>Project Management Foundations</th><td>LinkedIn Learning — Feb 2025</td></tr>
+            <tr><th>Mindfulness</th><td>LinkedIn Learning — Feb 2025</td></tr>
+            <tr><th>Communications within Teams</th><td>LinkedIn Learning — Feb 2025</td></tr>
+            <tr><th>Communication Foundations</th><td>LinkedIn Learning — Feb 2025</td></tr>
+          </table>
+        </div>
+
+        <!-- Salto de página limpio para PDF antes de Referencias -->
+        <div class="section-break"></div>
+
+        <div class="section" id="referencias">
+          <h2>Referencias</h2>
+          <div class="refs">
+            <div class="ref-card"><strong>Alma Aguilar</strong><br>Everise, S.A.<br><span class="muted">Tel: 5562 6327</span></div>
+            <div class="ref-card"><strong>Jeff Lara</strong><br>Everise, S.A.<br><span class="muted">Tel: 4120 4614</span></div>
+            <div class="ref-card"><strong>Blanca Vásquez</strong><br>Everise, S.A.<br><span class="muted">Tel: 3156 3155</span></div>
+            <div class="ref-card"><strong>Lic. Josué Mizraim Valleau Cordón</strong><br>Inmobiliaria Valleau<br><span class="muted">Tel: 5516 7232</span></div>
+            <div class="ref-card"><strong>Ing. Josue Soto</strong><br>Palo Blanco<br><span class="muted">Tel: 5624 2364</span></div>
+            <div class="ref-card"><strong>Mec. José Marín</strong><br>Mecánico Aeronáutico<br><span class="muted">Tel: 5528 7972</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
