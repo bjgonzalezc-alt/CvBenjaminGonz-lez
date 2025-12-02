@@ -420,29 +420,19 @@
         0 10px 22px rgba(15,23,42,.9);
     }
 
-    /* =============  VIDEO / IMAGEN PROYECTOS  ============= */
-    .project-media-grid{
-      display:grid;
-      grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
-      gap:10px;
-      width:100%;
-      align-items:stretch;
-    }
-
-    .project-video,
-    .project-image{
+    /* ============= VIDEO / IMAGEN PROYECTOS  ============= */
+    .project-video{
       border:1px solid rgba(248,250,252,.35);
       border-radius:12px;
       box-shadow:0 8px 18px rgba(15,23,42,.9);
       background:rgba(15,23,42,.9);
-      padding:10px;
       display:flex;
       flex-direction:column;
       align-items:center;
       justify-content:center;
+      padding:10px;
       gap:6px;
     }
-
     .project-video iframe{
       display:block;
       width:100%;
@@ -452,7 +442,6 @@
       border:0;
       background:#000;
     }
-
     .project-video a,
     .project-image a{
       font-size:10px;
@@ -468,6 +457,18 @@
       text-decoration:underline;
     }
 
+    .project-image{
+      position:relative;
+      border:1px solid rgba(248,250,252,.35);
+      border-radius:12px;
+      box-shadow:0 8px 18px rgba(15,23,42,.9);
+      background:rgba(15,23,42,.9);
+      padding:10px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+    }
     .project-image img{
       width:100%;
       border-radius:10px;
@@ -475,6 +476,22 @@
       display:block;
       object-fit:cover;
       background:#000;
+    }
+    .fullscreen-btn{
+      position:absolute;
+      top:8px;
+      right:8px;
+      border:0;
+      border-radius:999px;
+      padding:3px 6px;
+      font-size:11px;
+      cursor:pointer;
+      background:rgba(15,23,42,.95);
+      color:#facc15;
+      box-shadow:0 0 0 1px rgba(248,250,252,.35);
+    }
+    .fullscreen-btn:hover{
+      background:rgba(250,204,21,.2);
     }
     /* ============================================================= */
 
@@ -485,7 +502,14 @@
       .avatar{margin:0 auto}
       .info-grid{grid-template-columns:1fr}
       .right-grid{grid-template-columns:1fr}
-      .project-media-grid{grid-template-columns:1fr;}
+    }
+
+    /* En pantallas pequeñas ocultamos el iframe,
+       pero dejamos el botón de "ABRIR EN GOOGLE DRIVE" */
+    @media (max-width:720px){
+      .project-video iframe{
+        display:none;
+      }
     }
 
     /* ===== Impresión ===== */
@@ -525,7 +549,8 @@
         color:#111;
         box-shadow:none;
       }
-      .project-media-grid{display:none;}
+      .project-video,
+      .project-image{display:none;}
     }
   </style>
 </head>
@@ -724,51 +749,56 @@ aplicando buenas prácticas de autenticación, cifrado de información y configu
             </div>
           </article>
 
-   <!-- PROYECTOS: VIDEO ARRIBA, IMAGEN ABAJO -->
-<article class="right-card">
-  <h2>Proyectos</h2>
+          <!-- PROYECTOS: VIDEO ARRIBA, IMAGEN ABAJO -->
+          <article class="right-card">
+            <h2>Proyectos</h2>
 
-  <!-- Video -->
-  <div class="project-video">
-    <iframe
-      src="https://drive.google.com/file/d/1e8mdlEgEby3IZnkLzH2zwDfoGk4vyQbK/preview"
-      allow="autoplay; fullscreen"
-      allowfullscreen
-    ></iframe>
-    <a href="https://drive.google.com/file/d/1e8mdlEgEby3IZnkLzH2zwDfoGk4vyQbK/view?usp=sharing"
-       target="_blank" rel="noopener noreferrer">
-      ABRIR EN GOOGLE DRIVE
-    </a>
-  </div>
+            <!-- Video -->
+            <div class="project-video">
+              <!-- Vista embebida (PC / pantallas grandes) -->
+              <iframe
+                src="https://drive.google.com/file/d/1e8mdlEgEby3IZnkLzH2zwDfoGk4vyQbK/preview"
+                allow="autoplay; fullscreen"
+                allowfullscreen
+              ></iframe>
 
-  <!-- Imagen (debajo del video) -->
-  <div class="project-image" style="margin-top:12px;">
-    <img
-      id="imgProyecto"
-      src="https://drive.google.com/uc?id=16e2IEp8LCB57wPazwEj32qfVF03QVd21&export=view"
-      alt="Imagen del proyecto — Inventario y servidor"
-      loading="lazy"
-      decoding="async"
-      referrerpolicy="no-referrer"
-      onerror="
-        if (!this.dataset.try1) {
-          this.dataset.try1 = 1;
-          this.src='https://drive.google.com/uc?export=download&id=16e2IEp8LCB57wPazwEj32qfVF03QVd21';
-        } else if (!this.dataset.try2) {
-          this.dataset.try2 = 1;
-          this.src='https://drive.google.com/thumbnail?id=16e2IEp8LCB57wPazwEj32qfVF03QVd21&sz=w1000';
-        } else {
-          this.style.display='none';
-          this.parentElement.innerHTML = '<p style=&quot;font-size:11px;color:#fed7aa;text-align:center;margin:4px 0;&quot;>No se pudo cargar la imagen, pero puedes verla en Google Drive.</p>';
-        }
-      ">
-    <a href="https://drive.google.com/file/d/16e2IEp8LCB57wPazwEj32qfVF03QVd21/view?usp=sharing"
-       target="_blank" rel="noopener noreferrer">
-      VER IMAGEN EN GOOGLE DRIVE
-    </a>
-  </div>
-</article>
+              <!-- Botón para abrir el video directo en Drive (sirve también en celular) -->
+              <a href="https://drive.google.com/file/d/1e8mdlEgEby3IZnkLzH2zwDfoGk4vyQbK/view?usp=sharing"
+                 target="_blank" rel="noopener noreferrer">
+                ABRIR EN GOOGLE DRIVE
+              </a>
+            </div>
 
+            <!-- Imagen (debajo del video) -->
+            <div class="project-image" style="margin-top:12px;">
+              <!-- Botón pantalla completa -->
+              <button type="button" class="fullscreen-btn" onclick="verImagenPantallaCompleta()">⤢</button>
+
+              <img
+                id="imgProyecto"
+                src="https://drive.google.com/uc?id=16e2IEp8LCB57wPazwEj32qfVF03QVd21&export=view"
+                alt="Imagen del proyecto — Inventario y servidor"
+                loading="lazy"
+                decoding="async"
+                referrerpolicy="no-referrer"
+                onerror="
+                  if (!this.dataset.try1) {
+                    this.dataset.try1 = 1;
+                    this.src='https://drive.google.com/uc?export=download&id=16e2IEp8LCB57wPazwEj32qfVF03QVd21';
+                  } else if (!this.dataset.try2) {
+                    this.dataset.try2 = 1;
+                    this.src='https://drive.google.com/thumbnail?id=16e2IEp8LCB57wPazwEj32qfVF03QVd21&sz=w1000';
+                  } else {
+                    this.style.display='none';
+                    this.parentElement.innerHTML = '<p style=&quot;font-size:11px;color:#fed7aa;text-align:center;margin:4px 0;&quot;>No se pudo cargar la imagen, pero puedes verla en Google Drive.</p>';
+                  }
+                ">
+              <a href="https://drive.google.com/file/d/16e2IEp8LCB57wPazwEj32qfVF03QVd21/view?usp=sharing"
+                 target="_blank" rel="noopener noreferrer">
+                VER IMAGEN EN GOOGLE DRIVE
+              </a>
+            </div>
+          </article>
 
           <!-- EDUCACIÓN ABAJO -->
           <article class="right-card">
@@ -810,5 +840,20 @@ aplicando buenas prácticas de autenticación, cifrado de información y configu
       </section>
     </main>
   </div>
+
+  <script>
+    function verImagenPantallaCompleta() {
+      var img = document.getElementById('imgProyecto');
+      if (!img) return;
+
+      if (img.requestFullscreen) {
+        img.requestFullscreen();
+      } else if (img.webkitRequestFullscreen) { // Safari
+        img.webkitRequestFullscreen();
+      } else if (img.msRequestFullscreen) { // IE/Edge viejos
+        img.msRequestFullscreen();
+      }
+    }
+  </script>
 </body>
 </html>
