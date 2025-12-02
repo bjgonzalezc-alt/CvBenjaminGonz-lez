@@ -514,43 +514,85 @@
 
     /* ===== Impresión ===== */
     @media print{
-      @page{ margin:16mm }
+      @page{
+        margin:16mm;
+      }
+
       body{
         background:#fff;
         color:#111;
         padding:0;
         font-size:11px;
       }
+
       .back-aura{display:none}
-      .hero,.card,.right-card,.info-card{
+
+      .hero,
+      .card,
+      .right-card,
+      .info-card{
         box-shadow:none;
         border:1px solid #dbeafe;
         background:#fff;
       }
-      .hero::before,.card::after{display:none}
+
+      .hero::before,
+      .card::after{
+        display:none;
+      }
+
       .btn{display:none}
       .tag,.badge{box-shadow:none}
       .subtitle{color:#374151}
-      .grid{grid-template-columns:1fr}
+
+      /* una sola columna al imprimir */
+      .grid{
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      /* bajar un poco más el contenido de la primera página */
+      .wrap{
+        margin:30mm auto 0;
+      }
+
       h1{color:#0f172a;text-shadow:none}
+
       h2{
         -webkit-background-clip:initial;
         background:initial;
         color:#b45309;
         filter:none;
       }
-      .kv th,.kv td{
+
+      .kv th,
+      .kv td{
         border-bottom:1px solid #e5e7eb;
         color:#111;
       }
+
       .ref-card{
         border-color:#e5e7eb;
         background:#fff;
         color:#111;
         box-shadow:none;
       }
+
       .project-video,
-      .project-image{display:none;}
+      .project-image{
+        display:none;
+      }
+
+      /* ========= EVITAR CORTES FEOS DENTRO DE LOS BLOQUES ========= */
+
+      header,
+      aside.card,
+      .right-card,
+      .info-card,
+      .section{
+        page-break-inside:avoid;
+        break-inside:avoid;
+      }
     }
   </style>
 </head>
