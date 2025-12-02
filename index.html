@@ -6,19 +6,30 @@
   <title>CV — Benjamín Josué González Cándido</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    /* ================== TEMA ESMERALDA / CIAN ================== */
+    /* ================== TEMA NEÓN NARANJA/AMARILLO ================== */
     :root{
-      --bg:#061013;
-      --panel:rgba(8,22,26,.65);
-      --card:rgba(7,16,20,.58);
-      --text:#e8fbff;
-      --muted:#a7c6cf;
-      --accent:#22d3ee;     /* cian */
-      --accent2:#00e09d;    /* esmeralda */
-      --accent3:#f59e0b;    /* ámbar (detalles) */
-      --border:rgba(255,255,255,.12);
-      --shadow:0 18px 50px rgba(0,0,0,.55);
-      --grad-1: conic-gradient(from 0deg at 50% 50%, #22d3ee, #00e09d, #f59e0b, #22d3ee);
+      --bg:#070111;
+      --panel:rgba(21,10,35,.9);
+      --card:rgba(15,10,30,.96);
+
+      --text:#fff7ed;
+      --muted:#fed7aa;
+
+      --accent:#fb923c;
+      --accent2:#facc15;
+      --accent3:#22d3ee;
+
+      --border:rgba(248,250,252,.35);
+      --shadow:0 24px 60px rgba(0,0,0,.9);
+
+      --grad-1: conic-gradient(
+        from 0deg at 50% 50%,
+        #fb923c,
+        #facc15,
+        #22d3ee,
+        #f97316,
+        #fb923c
+      );
     }
 
     *{box-sizing:border-box}
@@ -28,159 +39,502 @@
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
       color:var(--text);
       background:
-        radial-gradient(70rem 46rem at 15% -10%, rgba(34,211,238,.18), transparent 60%),
-        radial-gradient(62rem 42rem at 110% 120%, rgba(0,224,157,.16), transparent 60%),
-        var(--bg);
-      -webkit-print-color-adjust:exact; print-color-adjust:exact;
-      padding:34px 18px 46px;
-      line-height:1.6;
+        radial-gradient(80rem 50rem at 5% -10%, rgba(251,146,60,.32), transparent 60%),
+        radial-gradient(70rem 48rem at 110% 120%, rgba(250,204,21,.30), transparent 60%),
+        radial-gradient(90rem 55rem at 50% 120%, rgba(34,211,238,.18), transparent 60%),
+        linear-gradient(135deg,#020617 0%,#020012 40%,#050114 60%,#020617 100%);
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+      padding:26px 14px 34px;
+      line-height:1.5;
       overflow-x:hidden;
+      background-attachment:fixed;
+      font-size:13px;
     }
 
-    /* Auras */
-    .back-aura{position:fixed;inset:-20vh -20vw auto auto;width:55vw;height:55vh;z-index:-1;filter:blur(70px) saturate(140%);opacity:.55;background:radial-gradient(closest-side, rgba(0,224,157,.35), transparent 60%);animation:float 18s ease-in-out infinite alternate}
-    .back-aura.b2{inset:auto auto -25vh -18vw;width:48vw;height:48vh;background:radial-gradient(closest-side, rgba(34,211,238,.35), transparent 60%);animation-duration:22s}
-    @keyframes float{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(2vw,-2vh,0) scale(1.06)}}
+    .back-aura{
+      position:fixed;
+      inset:-20vh -20vw auto auto;
+      width:55vw;height:55vh;
+      z-index:-1;
+      filter:blur(90px) saturate(160%);
+      opacity:.8;
+      background:radial-gradient(closest-side, rgba(251,146,60,.55), transparent 60%);
+      animation:float 18s ease-in-out infinite alternate;
+      mix-blend-mode:screen;
+    }
+    .back-aura.b2{
+      inset:auto auto -25vh -18vw;
+      width:48vw;height:48vh;
+      background:radial-gradient(closest-side, rgba(250,204,21,.55), transparent 60%);
+      animation-duration:22s;
+    }
+    @keyframes float{
+      0%{transform:translate3d(0,0,0) scale(1)}
+      100%{transform:translate3d(3vw,-3vh,0) scale(1.08)}
+    }
 
     .wrap{max-width:1100px;margin:auto}
 
     /* ===== Encabezado ===== */
     .hero{
       position:relative;
-      display:grid;grid-template-columns:190px 1fr auto;gap:22px;align-items:center;
-      padding:24px;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)), var(--panel);
-      border:1px solid var(--border); border-radius:26px; box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:180px 1fr auto;
+      gap:18px;
+      align-items:center;
+      padding:18px 20px;
+      background:
+        linear-gradient(135deg, rgba(30,64,175,.25), rgba(15,23,42,.65)),
+        var(--panel);
+      border:1px solid var(--border);
+      border-radius:24px;
+      box-shadow:var(--shadow);
       isolation:isolate;
+      backdrop-filter:blur(20px);
     }
+
     .hero::before{
-      content:""; position:absolute; inset:-2px; border-radius:28px; z-index:-1;
-      background:var(--grad-1); filter:blur(10px) saturate(140%); opacity:.55;
-      animation: spin 12s linear infinite;
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius:26px;
+      z-index:-1;
+      background:var(--grad-1);
+      filter:blur(14px) saturate(180%);
+      opacity:.75;
+      animation: spin 13s linear infinite;
       mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
       padding:2px;
     }
     @keyframes spin{to{transform:rotate(360deg)}}
 
     .avatar{
-      width:190px;height:190px;border-radius:20px;overflow:hidden;
-      border:1px solid rgba(255,255,255,.18);
+      width:180px;height:180px;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(248,250,252,.85);
       box-shadow:
-        0 0 0 4px rgba(34,211,238,.10),
-        0 18px 44px rgba(0,0,0,.55),
-        0 0 36px -10px rgba(0,224,157,.35);
-      background:radial-gradient(120px 120px at 70% 20%, rgba(0,224,157,.20), transparent 60%), #07151a;
+        0 0 0 3px rgba(250,204,21,.55),
+        0 22px 40px rgba(0,0,0,.95),
+        0 0 40px -6px rgba(251,146,60,.85);
+      background:
+        radial-gradient(120px 120px at 70% 20%, rgba(251,146,60,.30), transparent 60%),
+        radial-gradient(160px 160px at 20% 100%, rgba(250,204,21,.22), transparent 60%),
+        #020617;
       display:flex;align-items:center;justify-content:center;
       position:relative;
     }
-    .avatar::after{content:"";position:absolute;inset:0;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02))}
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;animation:fade .7s ease .05s forwards}
+    .avatar::after{
+      content:"";
+      position:absolute;inset:0;
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(15,23,42,.35));
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+    .avatar img{
+      width:100%;height:100%;
+      object-fit:cover;display:block;
+      opacity:0;
+      animation:fade .7s ease .05s forwards;
+    }
     @keyframes fade{to{opacity:1}}
 
-    h1{margin:0;font-family:'Playfair Display',serif;font-size:clamp(30px,4.8vw,54px);line-height:1.06}
-    .subtitle{color:var(--muted);margin-top:4px;font-weight:600}
+    h1{
+      margin:0;
+      font-family:'Playfair Display',serif;
+      font-size:clamp(28px,3.9vw,42px);
+      line-height:1.05;
+      letter-spacing:.03em;
+      color:#fffbeb;
+      text-shadow:
+        0 0 16px rgba(251,146,60,.7),
+        0 0 30px rgba(0,0,0,.9);
+    }
+    .subtitle{
+      color:#fed7aa;
+      margin-top:4px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:10px;
+    }
 
     .contact{
-      display:grid;grid-template-columns:repeat(2, max-content);gap:10px 14px;align-items:center;
-      color:#cffafe;font-weight:700;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:6px;
+      align-items:center;
+      color:#fffbeb;
+      font-weight:700;
+      justify-items:end;
+      font-size:12px;
     }
     .tag{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid rgba(34,211,238,.35);
-      padding:8px 12px;border-radius:999px;text-decoration:none;color:inherit;white-space:nowrap;
+      background:linear-gradient(180deg, rgba(15,23,42,.95), rgba(15,23,42,.99));
+      border:1px solid rgba(248,250,252,.6);
+      padding:6px 10px;
+      border-radius:999px;
+      text-decoration:none;
+      color:inherit;
+      white-space:nowrap;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      box-shadow:0 0 0 1px rgba(15,23,42,.8), 0 0 18px rgba(15,23,42,.9);
+      position:relative;
+      overflow:hidden;
+    }
+    .tag::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,.35) 40%, transparent 80%);
+      transform:translateX(-120%);
+      opacity:0;
+    }
+    .tag:hover::after{animation:shine 0.9s ease-out forwards;}
+    @keyframes shine{
+      0%{transform:translateX(-120%);opacity:0}
+      30%{opacity:.9}
+      100%{transform:translateX(120%);opacity:0}
     }
 
     .btn{
-      background:linear-gradient(135deg,#00e09d 0%, #22d3ee 50%, #f59e0b 100%);
-      border:0;border-radius:14px;padding:11px 18px;color:#041b1b;font-weight:900;cursor:pointer;
-      box-shadow:0 8px 24px rgba(0,224,157,.25);
+      background:linear-gradient(135deg,#fb923c 0%, #facc15 45%, #22d3ee 100%);
+      border:0;
+      border-radius:14px;
+      padding:7px 14px;
+      color:#020617;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:
+        0 10px 24px rgba(251,146,60,.55),
+        0 0 26px rgba(250,204,21,.7);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:10px;
     }
 
     /* ===== Contenido ===== */
-    .grid{display:grid;grid-template-columns:340px 1fr;gap:24px;margin-top:24px}
+    .grid{
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:18px;
+      margin-top:18px;
+      align-items:flex-start;
+    }
+
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)), var(--card);
-      border:1px solid var(--border); border-radius:18px; padding:20px; box-shadow:var(--shadow); position:relative;
+      background:
+        radial-gradient(circle at 0 0, rgba(251,146,60,.18), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(250,204,21,.16), transparent 65%),
+        linear-gradient(180deg, rgba(15,23,42,.97), rgba(15,23,42,.99));
+      border:1px solid rgba(248,250,252,.35);
+      border-radius:18px;
+      padding:14px 16px;
+      box-shadow:var(--shadow);
+      position:relative;
+      backdrop-filter:blur(16px);
+      overflow:hidden;
     }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background-image:
+        linear-gradient(120deg, rgba(248,250,252,.08) 1px, transparent 1px);
+      background-size:26px 26px;
+      opacity:.18;
+      pointer-events:none;
+      mix-blend-mode:soft-light;
+    }
+
     h2{
-      text-transform:uppercase;font-size:12.5px;letter-spacing:1.6px;margin:0 0 12px 0;
-      background:linear-gradient(90deg, #22d3ee, #00e09d); -webkit-background-clip:text; background-clip:text; color:transparent;
-      filter: drop-shadow(0 0 5px rgba(34,211,238,.25));
+      text-transform:uppercase;
+      font-size:11px;
+      letter-spacing:1.8px;
+      margin:0 0 8px 0;
+      background:linear-gradient(90deg, #fb923c, #facc15, #22d3ee);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      filter: drop-shadow(0 0 5px rgba(251,146,60,.6));
+      position:relative;
+      z-index:1;
     }
 
-    /* Tablas info limpia (mejor en PDF) */
-    .kv{width:100%;border-collapse:collapse;font-size:14px}
-    .kv th,.kv td{padding:6px 8px;border-bottom:1px dashed rgba(255,255,255,.12);vertical-align:top}
-    .kv th{color:var(--muted);font-weight:600;width:38%}
-    .kv td{font-weight:750}
+    .section{position:relative;z-index:1;margin-top:6px;}
 
-    /* Habilidades / badges */
-    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .kv{
+      width:100%;
+      border-collapse:collapse;
+      font-size:12px;
+      position:relative;
+      z-index:1;
+    }
+    .kv th,.kv td{
+      padding:4px 6px;
+      border-bottom:1px dashed rgba(248,250,252,.35);
+      vertical-align:top;
+    }
+    .kv th{
+      color:var(--muted);
+      font-weight:600;
+      width:40%;
+      font-size:11.5px;
+    }
+    .kv td{
+      font-weight:700;
+      color:#fffbeb;
+    }
+
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      position:relative;
+      z-index:1;
+    }
     .badge{
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.14);
-      border-radius:999px;padding:7px 10px;font-size:13px;
-      box-shadow: inset 0 0 14px rgba(34,211,238,.14);
+      background:radial-gradient(circle at 0 0, rgba(251,146,60,.28), rgba(15,23,42,.98));
+      border:1px solid rgba(248,250,252,.7);
+      border-radius:999px;
+      padding:4px 8px;
+      font-size:11px;
+      box-shadow:
+        inset 0 0 16px rgba(251,146,60,.4),
+        0 0 14px rgba(15,23,42,1);
+      white-space:nowrap;
     }
 
-    .message{
-      background:linear-gradient(180deg, rgba(34,211,238,.08), rgba(0,224,157,.06));
-      border:1px solid rgba(34,211,238,.18);
-      border-radius:14px;padding:14px 16px;margin-bottom:16px;
-      box-shadow: inset 0 0 26px rgba(34,211,238,.10)
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+      position:relative;
+      z-index:1;
+      font-size:12px;
     }
-    .message strong{display:block;margin-bottom:6px;background:linear-gradient(90deg,#22d3ee,#00e09d);-webkit-background-clip:text;color:transparent}
+    .t-item{
+      position:relative;
+      padding-left:14px;
+    }
+    .t-item::before{
+      content:''; 
+      position:absolute;
+      left:0;top:7px;
+      width:7px;height:7px;
+      border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, #fb923c);
+      box-shadow:
+        0 0 0 2px rgba(251,146,60,.4),
+        0 0 14px rgba(251,146,60,.8);
+    }
+    .t-title{font-weight:800;font-size:12px;}
+    .t-sub{
+      color:var(--muted);
+      font-size:11px;
+      margin-top:1px;
+    }
+    .t-body{margin-top:2px}
+    .t-body ul{
+      margin:2px 0 0 14px;
+      padding-left:0;
+      font-size:11.5px;
+    }
+    .t-body li{margin-bottom:2px}
 
-    .timeline{display:flex;flex-direction:column;gap:14px}
-    .t-item{position:relative;padding-left:18px;page-break-inside:avoid}
-    .t-item::before{content:'';position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:50%;background: radial-gradient(circle at 30% 30%, #fff, #22d3ee);box-shadow:0 0 0 3px rgba(34,211,238,.18), 0 0 18px rgba(34,211,238,.45)}
-    .t-title{font-weight:800}
-    .t-sub{color:var(--muted);font-size:14px;margin-top:3px}
-    .t-body{margin-top:6px}
-    .t-body ul{margin:6px 0 0 18px}
-    .t-body li{margin-bottom:6px}
+    .refs{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:6px;
+      font-size:11px;
+    }
+    .ref-card{
+      border:1px dashed rgba(248,250,252,.75);
+      border-radius:10px;
+      padding:6px;
+      background:linear-gradient(180deg, rgba(15,23,42,.99), rgba(15,23,42,.96));
+      color:#fffbeb;
+      box-shadow:0 6px 16px rgba(15,23,42,.9);
+    }
+    .muted{color:var(--muted);font-size:10px}
 
-    .refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
-    .ref-card{border:1px dashed rgba(255,255,255,.18);border-radius:12px;padding:12px;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));color:#d9fbff}
+    /* ===== Derecha tipo tablero ===== */
+    .right-column{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
 
-    /* ===== Diseño responsivo ===== */
+    .info-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:8px;
+    }
+    .info-card{
+      background:linear-gradient(145deg, rgba(15,23,42,.98), rgba(30,41,59,.96));
+      border-radius:12px;
+      border:1px solid rgba(248,250,252,.45);
+      padding:8px 10px;
+      font-size:11.5px;
+      box-shadow:0 8px 18px rgba(15,23,42,.9);
+    }
+    .info-card-title{
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      margin-bottom:3px;
+      color:#fed7aa;
+    }
+
+    .right-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:8px;
+    }
+
+    .right-card{
+      background:linear-gradient(180deg, rgba(15,23,42,.98), rgba(15,23,42,.99));
+      border-radius:14px;
+      border:1px solid rgba(248,250,252,.35);
+      padding:8px 10px;
+      box-shadow:0 10px 22px rgba(15,23,42,.9);
+    }
+    .right-card h2{margin-bottom:4px;font-size:11px;}
+    .right-card p{margin:0;font-size:11.5px;}
+
+    .right-card.full{
+      grid-column:1 / -1;
+    }
+
+    .right-card.message-card{
+      background:linear-gradient(135deg, rgba(251,146,60,.22), rgba(250,204,21,.24));
+      box-shadow:
+        inset 0 0 20px rgba(251,146,60,.18),
+        0 10px 22px rgba(15,23,42,.9);
+    }
+
+    /* =============  VIDEO / IMAGEN PROYECTOS  ============= */
+    .project-media-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+      gap:10px;
+      width:100%;
+      align-items:stretch;
+    }
+
+    .project-video,
+    .project-image{
+      border:1px solid rgba(248,250,252,.35);
+      border-radius:12px;
+      box-shadow:0 8px 18px rgba(15,23,42,.9);
+      background:rgba(15,23,42,.9);
+      padding:10px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+    }
+
+    .project-video iframe{
+      display:block;
+      width:100%;
+      max-width:100%;
+      height:260px;
+      border-radius:10px;
+      border:0;
+      background:#000;
+    }
+
+    .project-video a,
+    .project-image a{
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:#facc15;
+      text-decoration:none;
+      opacity:.85;
+    }
+    .project-video a:hover,
+    .project-image a:hover{
+      opacity:1;
+      text-decoration:underline;
+    }
+
+    .project-image img{
+      width:100%;
+      border-radius:10px;
+      border:0;
+      display:block;
+      object-fit:cover;
+      background:#000;
+    }
+    /* ============================================================= */
+
     @media (max-width:920px){
       .hero{grid-template-columns:1fr; text-align:center}
       .grid{grid-template-columns:1fr}
-      .contact{grid-template-columns:1fr;justify-items:center}
+      .contact{justify-items:center}
+      .avatar{margin:0 auto}
+      .info-grid{grid-template-columns:1fr}
+      .right-grid{grid-template-columns:1fr}
+      .project-media-grid{grid-template-columns:1fr;}
     }
 
-    /* ===== Optimización para PDF/Impresión ===== */
+    /* ===== Impresión ===== */
     @media print{
       @page{ margin:16mm }
-      body{background:#fff;color:#111;padding:0}
+      body{
+        background:#fff;
+        color:#111;
+        padding:0;
+        font-size:11px;
+      }
       .back-aura{display:none}
-      .hero,.card{box-shadow:none;border:1px solid #dbeafe;background:#fff}
+      .hero,.card,.right-card,.info-card{
+        box-shadow:none;
+        border:1px solid #dbeafe;
+        background:#fff;
+      }
+      .hero::before,.card::after{display:none}
       .btn{display:none}
       .tag,.badge{box-shadow:none}
-      .hero::before{display:none}
       .subtitle{color:#374151}
-      .grid{grid-template-columns:1fr}               /* una columna para legibilidad */
-      h1{color:#0f172a}
-      h2{-webkit-background-clip:initial;background:initial;color:#065f46} /* títulos verde oscuro */
-      .kv th,.kv td{border-bottom:1px solid #e5e7eb;color:#111}
-      .ref-card{border-color:#e5e7eb;background:#fff;color:#111}
-      .message{background:#f0fdf4;border-color:#bbf7d0;color:#052e2b}
-      .section-break{page-break-before:always}      /* fuerza salto si se usa */
-      a[href^="mailto:"], a[href^="tel:"]{text-decoration:none;color:#111}
+      .grid{grid-template-columns:1fr}
+      h1{color:#0f172a;text-shadow:none}
+      h2{
+        -webkit-background-clip:initial;
+        background:initial;
+        color:#b45309;
+        filter:none;
+      }
+      .kv th,.kv td{
+        border-bottom:1px solid #e5e7eb;
+        color:#111;
+      }
+      .ref-card{
+        border-color:#e5e7eb;
+        background:#fff;
+        color:#111;
+        box-shadow:none;
+      }
+      .project-media-grid{display:none;}
     }
   </style>
 </head>
 <body>
-  <!-- Auras -->
   <div class="back-aura"></div>
   <div class="back-aura b2"></div>
 
   <div class="wrap">
-    <!-- ============ ENCABEZADO ============ -->
     <header class="hero">
-      <!-- FOTO con fallbacks -->
       <div class="avatar" aria-label="Foto de perfil">
         <img
           id="fotoPerfil"
@@ -199,45 +553,44 @@
               this.src='https://drive.google.com/thumbnail?id=1Rhl4iKJH94Ry1hYxRAJlaD-6M_AJ84sx&sz=w1000';
             } else {
               this.style.display='none';
-              this.parentElement.style.background='linear-gradient(135deg,#0b2a2a,#041616)';
+              this.parentElement.style.background='linear-gradient(135deg,#020617,#020617)';
               this.parentElement.title='No se pudo cargar la imagen';
             }
           ">
       </div>
 
-      <!-- Nombre + subtítulo -->
       <div>
         <h1>Benjamín Josué González Cándido</h1>
         <div class="subtitle">Estudiante de Ingeniería en Sistemas y Ciencias de la Computación</div>
       </div>
 
-      <!-- Contacto compacto (se ve perfecto en PDF) -->
       <div class="contact">
-        <a class="tag" href="mailto:bennygonza2004@gmail.com">bennygonza2004@gmail.com</a>
-        <a class="tag" href="tel:+50245495038">+502 4549-5038</a>
-        <span class="tag">San Lucas Sacatepéquez, Guatemala</span>
+        <a class="tag" href="mailto:bennygonza2004@gmail.com">✉ bennygonza2004@gmail.com</a>
+        <a class="tag" href="tel:+50245495038">📱 +502 4549-5038</a>
+        <span class="tag">📍 San Lucas Sacatepéquez, Guatemala</span>
         <button class="btn" onclick="window.print()">Imprimir / PDF</button>
       </div>
     </header>
 
-    <!-- ============ CUERPO ============ -->
     <main class="grid">
-      <!-- Columna izquierda: Datos + Idiomas + Fortalezas -->
+      <!-- IZQUIERDA -->
       <aside class="card">
-        <h2>Datos personales</h2>
-        <table class="kv">
-          <tr><th>DPI</th><td>3019275290101</td></tr>
-          <tr><th>Estado civil</th><td>Soltero</td></tr>
-          <tr><th>Nacionalidad</th><td>Guatemalteco</td></tr>
-          <tr><th>Dirección</th><td>Km. 26.5 Carretera Interamericana, Entrada al Cerro Alux, Casa No. 5, San Lucas Sacatepéquez</td></tr>
-          <tr><th>Teléfonos</th><td>Residencia: 4549-5038 · Celular: 4549-5038</td></tr>
-        </table>
+        <div class="section">
+          <h2>Datos personales</h2>
+          <table class="kv">
+            <tr><th>DPI</th><td>3019275290101</td></tr>
+            <tr><th>Estado civil</th><td>Soltero</td></tr>
+            <tr><th>Nacionalidad</th><td>Guatemalteco</td></tr>
+            <tr><th>Dirección</th><td>Km. 26.5 Carretera Interamericana, Entrada al Cerro Alux, Casa No. 5, San Lucas Sacatepéquez</td></tr>
+            <tr><th>Teléfonos</th><td>Residencia: 4549-5038 · Celular: 4549-5038</td></tr>
+          </table>
+        </div>
 
-        <div class="section" style="margin-top:14px">
+        <div class="section">
           <h2>Idiomas</h2>
           <table class="kv">
             <tr><th>Español</th><td>Nativo</td></tr>
-            <tr><th>Inglés</th><td>90%</td></tr>
+            <tr><th>Inglés</th><td>Intermedio alto (≈ B2)</td></tr>
           </table>
         </div>
 
@@ -252,100 +605,207 @@
             <span class="badge">Coaching</span>
           </div>
         </div>
-      </aside>
-
-      <!-- Columna derecha: Resumen + Perfil + Educación + Experiencia + Cursos -->
-      <section class="card">
-        <div class="message">
-          <strong>Resumen profesional</strong>
-         Presento mi currículum con enfoque en el área de Ingeniería en Sistemas, destacando mi interés en el desarrollo de software, la administración de bases de datos y la ciberseguridad. Poseo experiencia en proyectos académicos y colaboraciones con empresas, donde he participado en el diseño e implementación de sitios web integrados a bases de datos y en el resguardo seguro de la información. Además, cuento con sólidos conocimientos en entornos Linux, fundamentos de hacking ético y controles de seguridad aplicados a sistemas web y móviles, incluyendo autenticación y cifrado de datos.
-        </div>
 
         <div class="section">
-          <h2>Perfil</h2>
-          <div class="badge" style="display:block;padding:12px 14px;border-radius:12px">
-            Enfoque en soluciones tecnológicas con buenas prácticas. Experiencia en atención al cliente con métricas altas,
-            documentación, análisis y trabajo en equipo. Busco contribuir en desarrollo, bases de datos o seguridad con
-            aprendizaje continuo y enfoque en resultados.
-          </div>
-        </div>
-
-        <div class="section">
-          <h2>Educación</h2>
-          <div class="timeline">
-            <div class="t-item">
-              <div class="t-title">Universidad San Pablo de Guatemala</div>
-              <div class="t-sub">Ingeniería en Sistemas y CC. de la Computación — Ene 2024 · Actualidad</div>
-            </div>
-            <div class="t-item">
-              <div class="t-title">Centro Educativo Getsemaní</div>
-              <div class="t-sub">Bachillerato en Computación — Ene 2022 · Oct 2023</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h2>Experiencia</h2>
-          <div class="timeline">
-            <div class="t-item">
-              <div class="t-title">Everise — Humana Pharmacy</div>
-              <div class="t-sub">Agente · SME — Nov 2023 · Actualidad</div>
-              <div class="t-body">
-                <ul>
-                  <li>Atención a usuarios de seguros/coberturas con enfoque en experiencia.</li>
-                  <li>Resolución de casos y propuestas de mejora bajo presión.</li>
-                  <li>Coaching a equipos (~10 personas) y soporte a KPIs.</li>
-                </ul>
-              </div>
-            </div>
-            <div class="t-item">
-              <div class="t-title">Alorica — Walmart / T-Mobile</div>
-              <div class="t-sub">Asesor de soporte y ventas — Oct 2022 · Dic 2022 / Nov 2023</div>
-              <div class="t-body">
-                <ul>
-                  <li>Ventas de líneas y seguimiento de envíos.</li>
-                  <li>Manejo de información sensible y sistemas internos.</li>
-                  <li>Mejoras en tiempos de respuesta y resolución.</li>
-                </ul>
-              </div>
-            </div>
-            <div class="t-item">
-              <div class="t-title">Experiencia técnica relevante</div>
-              <div class="t-sub">Proyectos académicos — Desarrollo, BD y Seguridad</div>
-              <div class="t-body">
-                <ul>
-                  <li>Web con bases de datos relacionales (diseño de esquemas y consultas).</li>
-                  <li>Integridad/normalización y prácticas de seguridad básica.</li>
-                  <li>Linux y fundamentos de pruebas de seguridad (ética).</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h2>Certificaciones & cursos</h2>
+          <h2>Habilidades técnicas</h2>
           <table class="kv">
-            <tr><th>Project Management Foundations</th><td>LinkedIn Learning — Feb 2025</td></tr>
-            <tr><th>Mindfulness</th><td>LinkedIn Learning — Feb 2025</td></tr>
-            <tr><th>Communications within Teams</th><td>LinkedIn Learning — Feb 2025</td></tr>
-            <tr><th>Communication Foundations</th><td>LinkedIn Learning — Feb 2025</td></tr>
+            <tr><th>Lenguajes</th><td>Python, Java, JavaScript, C#</td></tr>
+            <tr><th>Web</th><td>HTML, CSS, JS, React básico, Node.js básico</td></tr>
+            <tr><th>Bases de datos</th><td>MySQL, PostgreSQL, SQL Server</td></tr>
+            <tr><th>Sistemas</th><td>Linux, Windows, Git/GitHub</td></tr>
+            <tr><th>Seguridad</th><td>Fundamentos de hacking ético y OWASP básico</td></tr>
           </table>
         </div>
+      </aside>
 
-        <!-- Salto de página limpio para PDF antes de Referencias -->
-        <div class="section-break"></div>
-
-        <div class="section" id="referencias">
-          <h2>Referencias</h2>
-          <div class="refs">
-            <div class="ref-card"><strong>Alma Aguilar</strong><br>Everise, S.A.<br><span class="muted">Tel: 5562 6327</span></div>
-            <div class="ref-card"><strong>Jeff Lara</strong><br>Everise, S.A.<br><span class="muted">Tel: 4120 4614</span></div>
-            <div class="ref-card"><strong>Blanca Vásquez</strong><br>Everise, S.A.<br><span class="muted">Tel: 3156 3155</span></div>
-            <div class="ref-card"><strong>Lic. Josué Mizraim Valleau Cordón</strong><br>Inmobiliaria Valleau<br><span class="muted">Tel: 5516 7232</span></div>
-            <div class="ref-card"><strong>Ing. Josue Soto</strong><br>Palo Blanco<br><span class="muted">Tel: 5624 2364</span></div>
-            <div class="ref-card"><strong>Mec. José Marín</strong><br>Mecánico Aeronáutico<br><span class="muted">Tel: 5528 7972</span></div>
+      <!-- DERECHA -->
+      <section class="right-column">
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-card-title">Perfil</div>
+            <div class="info-card-body">
+              Estudiante de Ingeniería en Sistemas enfocado en desarrollo, bases de datos y seguridad. Trabajo en equipo, aprendizaje rápido y orientación a resultados.
+            </div>
           </div>
+          <div class="info-card">
+            <div class="info-card-title">Áreas clave</div>
+            <div class="info-card-body">
+              Desarrollo web · Modelado de BD · Controles de seguridad básicos · Soporte al usuario final.
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-title">Idiomas</div>
+            <div class="info-card-body">
+              Español nativo · Inglés B2 aprox. con experiencia atendiendo clientes de EE. UU.
+            </div>
+          </div>
+        </div>
+
+        <div class="right-grid">
+          <article class="right-card message-card">
+            <h2>Resumen profesional</h2>
+            <p>
+Interés principal en el desarrollo de software, la administración de bases de datos y la ciberseguridad. Cuento con experiencia en proyectos académicos y 
+colaboraciones con empresas, desarrollando sitios web conectados a bases de datos MySQL, PostgreSQL y SQL Server, así como APIs funcionales en PHP. Manejo JavaScript 
+para desarrollo web y he trabajado en proyectos móviles utilizando Android Studio. También cuento con experiencia en máquinas virtuales para entornos de prueba y despliegue, 
+aplicando buenas prácticas de autenticación, cifrado de información y configuración segura en sistemas Linux.
+            </p>
+          </article>
+
+          <article class="right-card">
+            <h2>Experiencia</h2>
+            <div class="timeline">
+              <div class="t-item">
+                <div class="t-title">Everise — Humana Pharmacy</div>
+                <div class="t-sub">Agente · SME — Nov 2023 · Actualidad</div>
+                <div class="t-body">
+                  <ul>
+                    <li>Soporte a usuarios de seguros con foco en experiencia y calidad.</li>
+                    <li>Coaching a equipo (~10 personas) y apoyo directo a KPIs.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="t-item">
+                <div class="t-title">Alorica — Walmart / T-Mobile</div>
+                <div class="t-sub">Soporte y ventas — Oct 2022 · Dic 2022 / Nov 2023</div>
+                <div class="t-body">
+                  <ul>
+                    <li>Ventas de líneas y seguimiento de envíos.</li>
+                    <li>Manejo de información sensible en múltiples plataformas.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="right-card">
+            <h2>Proyectos relevantes</h2>
+            <div class="timeline">
+
+              <div class="t-item">
+                <div class="t-title">Sistema web de inventario</div>
+                <div class="t-sub">HTML, CSS, JavaScript, Java, MySQL</div>
+                <div class="t-body">
+                  <ul>
+                    <li>Diseño completo del modelo de base de datos para productos, movimientos y usuarios.</li>
+                    <li>Desarrollo de un sistema CRUD para el control de entradas, salidas y existencias.</li>
+                    <li>Implementación de validaciones, búsqueda dinámica y generación automática de reportes.</li>
+                    <li>Integración con Java para procesar datos y manejar la lógica del sistema.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-title">Servidor con login, API y roles de usuario</div>
+                <div class="t-sub">PHP, MySQL, SQL Server, PostgreSQL, XAMPP, Postman</div>
+                <div class="t-body">
+                  <ul>
+                    <li>Desarrollo de una API REST con PHP para operaciones CRUD seguras y estructuradas.</li>
+                    <li>Autenticación con manejo de sesiones, hashing de contraseñas y sanitización de datos.</li>
+                    <li>Implementación de roles (admin/usuario) con control de permisos en cada endpoint.</li>
+                    <li>Pruebas completas con Postman y conexión a múltiples motores de BD.</li>
+                    <li>Versión del sistema montada en máquinas virtuales para pruebas y despliegue.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="t-item">
+                <div class="t-title">Aplicación móvil básica en Android Studio</div>
+                <div class="t-sub">Java, Android Studio, SQLite</div>
+                <div class="t-body">
+                  <ul>
+                    <li>Creación de pantallas, manejo de actividades e implementación de navegación.</li>
+                    <li>Registro y almacenamiento local con SQLite.</li>
+                    <li>Interfaz optimizada para dispositivos móviles de gama media.</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+   <!-- PROYECTOS: VIDEO ARRIBA, IMAGEN ABAJO -->
+<article class="right-card">
+  <h2>Proyectos</h2>
+
+  <!-- Video -->
+  <div class="project-video">
+    <iframe
+      src="https://drive.google.com/file/d/1e8mdlEgEby3IZnkLzH2zwDfoGk4vyQbK/preview"
+      allow="autoplay; fullscreen"
+      allowfullscreen
+    ></iframe>
+    <a href="https://drive.google.com/file/d/1e8mdlEgEby3IZnkLzH2zwDfoGk4vyQbK/view?usp=sharing"
+       target="_blank" rel="noopener noreferrer">
+      ABRIR EN GOOGLE DRIVE
+    </a>
+  </div>
+
+  <!-- Imagen (debajo del video) -->
+  <div class="project-image" style="margin-top:12px;">
+    <img
+      id="imgProyecto"
+      src="https://drive.google.com/uc?id=16e2IEp8LCB57wPazwEj32qfVF03QVd21&export=view"
+      alt="Imagen del proyecto — Inventario y servidor"
+      loading="lazy"
+      decoding="async"
+      referrerpolicy="no-referrer"
+      onerror="
+        if (!this.dataset.try1) {
+          this.dataset.try1 = 1;
+          this.src='https://drive.google.com/uc?export=download&id=16e2IEp8LCB57wPazwEj32qfVF03QVd21';
+        } else if (!this.dataset.try2) {
+          this.dataset.try2 = 1;
+          this.src='https://drive.google.com/thumbnail?id=16e2IEp8LCB57wPazwEj32qfVF03QVd21&sz=w1000';
+        } else {
+          this.style.display='none';
+          this.parentElement.innerHTML = '<p style=&quot;font-size:11px;color:#fed7aa;text-align:center;margin:4px 0;&quot;>No se pudo cargar la imagen, pero puedes verla en Google Drive.</p>';
+        }
+      ">
+    <a href="https://drive.google.com/file/d/16e2IEp8LCB57wPazwEj32qfVF03QVd21/view?usp=sharing"
+       target="_blank" rel="noopener noreferrer">
+      VER IMAGEN EN GOOGLE DRIVE
+    </a>
+  </div>
+</article>
+
+
+          <!-- EDUCACIÓN ABAJO -->
+          <article class="right-card">
+            <h2>Educación</h2>
+            <div class="timeline">
+              <div class="t-item">
+                <div class="t-title">Universidad San Pablo de Guatemala</div>
+                <div class="t-sub">Ing. en Sistemas y CC. de la Computación — Ene 2024 · Actualidad</div>
+              </div>
+              <div class="t-item">
+                <div class="t-title">Centro Educativo Getsemaní</div>
+                <div class="t-sub">Bachillerato en Computación — Ene 2022 · Oct 2023</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="right-card">
+            <h2>Certificaciones & cursos</h2>
+            <table class="kv">
+              <tr><th>Project Management Foundations</th><td>LinkedIn Learning — Feb 2025</td></tr>
+              <tr><th>Mindfulness</th><td>LinkedIn Learning — Feb 2025</td></tr>
+              <tr><th>Communications within Teams</th><td>LinkedIn Learning — Feb 2025</td></tr>
+              <tr><th>Communication Foundations</th><td>LinkedIn Learning — Feb 2025</td></tr>
+            </table>
+          </article>
+
+          <article class="right-card full">
+            <h2>Referencias</h2>
+            <div class="refs">
+              <div class="ref-card"><strong>Alma Aguilar</strong><br>Everise, S.A.<br><span class="muted">Tel: 5562 6327</span></div>
+              <div class="ref-card"><strong>Jeff Lara</strong><br>Everise, S.A.<br><span class="muted">Tel: 4120 4614</span></div>
+              <div class="ref-card"><strong>Blanca Vásquez</strong><br>Everise, S.A.<br><span class="muted">Tel: 3156 3155</span></div>
+              <div class="ref-card"><strong>Lic. Josué Mizraim Valleau Cordón</strong><br>Inmobiliaria Valleau<br><span class="muted">Tel: 5516 7232</span></div>
+              <div class="ref-card"><strong>Ing. Josue Soto</strong><br>Palo Blanco<br><span class="muted">Tel: 5624 2364</span></div>
+              <div class="ref-card"><strong>Mec. José Marín</strong><br>Mecánico Aeronáutico<br><span class="muted">Tel: 5528 7972</span></div>
+            </div>
+          </article>
         </div>
       </section>
     </main>
