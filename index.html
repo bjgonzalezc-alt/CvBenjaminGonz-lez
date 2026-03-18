@@ -23,7 +23,7 @@
   <title>CV — Benjamín Josué González Cándido</title>
 
   <!-- HANNA'S GIFT TO YOU MY LOVE <3 -->
-    <link rel="icon" type="image/svg+xml" sizes="32x32" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="favicon.png">
     
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -252,6 +252,25 @@
       justify-items:end;
       font-size:12px;
     }
+.contact-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 6px 14px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(0,0,0,0.25);
+
+  color: #fffbeb;
+  text-decoration: none;
+
+  font-weight: 700;
+  font-size: 12px;
+
+  backdrop-filter: blur(4px);
+}
     .tag{
       background:
         radial-gradient(140% 120% at 0% 0%, rgba(249,115,22,.16), transparent 55%),
@@ -477,12 +496,11 @@
       color:#fed7aa;
     }
 
-    .right-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:8px;
-    }
-
+.right-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+}
     .right-card{
       background:
         radial-gradient(140% 120% at 0% 0%, rgba(249,115,22,.14), transparent 55%),
@@ -492,15 +510,19 @@
       padding:8px 10px;
       box-shadow:0 10px 22px rgba(15,23,42,.9);
     }
+    .right-card.experiencia{
+  grid-column: 1 / 2;
+}
     .right-card h2{margin-bottom:4px;font-size:11px;}
     .right-card p{margin:0;font-size:11.5px;}
     .right-card.full{grid-column:1 / -1;}
-    .right-card.message-card{
-      background:linear-gradient(135deg, rgba(251,146,60,.22), rgba(250,204,21,.24));
-      box-shadow:
-        inset 0 0 20px rgba(251,146,60,.18),
-        0 10px 22px rgba(15,23,42,.9);
-    }
+.right-card.message-card{
+  background:linear-gradient(135deg, rgba(251,146,60,.22), rgba(250,204,21,.24));
+  box-shadow:
+    inset 0 0 20px rgba(251,146,60,.18),
+    0 10px 22px rgba(15,23,42,.9);
+  grid-column: 1 / -1;
+}
 
     /* ============= VIDEO / IMAGEN PROYECTOS ============= */
     .project-video{
@@ -802,9 +824,16 @@
       </div>
 
       <div class="contact">
-        <a class="tag" href="mailto:bennygonza2004@gmail.com">✉ bennygonza2004@gmail.com</a>
-        <a class="tag" href="tel:+50245495038">📱 +502 4549-5038</a>
-        <span class="tag">📍 San Lucas Sacatepéquez, Guatemala</span>
+
+<a href="https://mail.google.com/mail/?view=cm&to=bennygonza2004@gmail.com" target="_blank" class="contact-pill">
+  📧 bennygonza2004@gmail.com
+</a>
+<a href="https://wa.me/50245495038" target="_blank" class="contact-pill">
+  📱 +502 4549-5038
+</a>
+<a href="https://www.google.com/maps?q=Parque+Central+San+Lucas+Sacatepéquez+Guatemala" target="_blank" class="tag">
+  📍 San Lucas Sacatepéquez, Guatemala
+</a>
         <button class="btn" onclick="window.print()">Imprimir / PDF</button>
       </div>
     </header>
@@ -818,7 +847,7 @@
             <tr><th>DPI</th><td>3019275290101</td></tr>
             <tr><th>Estado civil</th><td>Soltero</td></tr>
             <tr><th>Nacionalidad</th><td>Guatemalteco</td></tr>
-            <tr><th>Dirección</th><td>calle principal de pachali sector 2 lote 28. Santiago Sacatepéquez</td></tr>
+            <tr><th>Dirección</th><td>San lucas Sacatepéquez</td></tr>
             <tr><th>Teléfonos</th><td>Residencia: 4549-5038 · Celular: 4549-5038</td></tr>
           </table>
         </div>
@@ -905,7 +934,7 @@
         </div>
 
         <div class="right-grid">
-          <article class="right-card message-card">
+<article class="right-card message-card" style="max-height: 140px; overflow: hidden;">
             <h2>Resumen profesional</h2>
             <p>
               Interés principal en el desarrollo de software, la administración de bases de datos y la ciberseguridad. Cuento con experiencia en proyectos académicos y
@@ -915,75 +944,64 @@
             </p>
           </article>
 
-          <article class="right-card">
-            <h2>Experiencia</h2>
-            <div class="timeline">
-              <div class="t-item">
-                <div class="t-title">Everise — Humana Pharmacy</div>
-                <div class="t-sub">Agente · SME — Nov 2023 · Actualidad</div>
-                <div class="t-body">
-                  <ul>
-                    <li>Soporte a usuarios de seguros con foco en experiencia y calidad.</li>
-                    <li>Coaching a equipo (~10 personas) y apoyo directo a KPIs.</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="t-item">
-                <div class="t-title">Alorica — Walmart / T-Mobile</div>
-                <div class="t-sub">Soporte y ventas — Oct 2022 · Dic 2022 / Nov 2023</div>
-                <div class="t-body">
-                  <ul>
-                    <li>Ventas de líneas y seguimiento de envíos.</li>
-                    <li>Manejo de información sensible en múltiples plataformas.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </article>
+<article class="right-card experiencia">
+  <h2>Experiencia</h2>
+<div class="timeline">
 
-          <article class="right-card">
-            <h2>Proyectos relevantes</h2>
-            <div class="timeline">
-              <div class="t-item">
-                <div class="t-title">Sistema web de inventario</div>
-                <div class="t-sub">HTML, CSS, JavaScript, Java, MySQL</div>
-                <div class="t-body">
-                  <ul>
-                    <li>Diseño completo del modelo de base de datos para productos, movimientos y usuarios.</li>
-                    <li>Desarrollo de un sistema CRUD para el control de entradas, salidas y existencias.</li>
-                    <li>Implementación de validaciones, búsqueda dinámica y generación automática de reportes.</li>
-                    <li>Integración con Java para procesar datos y manejar la lógica del sistema.</li>
-                  </ul>
-                </div>
-              </div>
+  <div class="t-item">
+    <div class="t-title">Everise — Humana Pharmacy</div>
+    <div class="t-sub">Agente · SME — Nov 2023 · Actualidad</div>
+    <div class="t-body">
+      <ul>
+        <li>Soporte a usuarios de seguros con foco en experiencia y calidad.</li>
+        <li>Coaching a equipo (~10 personas) y apoyo directo a KPIs.</li>
+      </ul>
+    </div>
+  </div>
 
-              <div class="t-item">
-                <div class="t-title">Servidor con login, API y roles de usuario</div>
-                <div class="t-sub">PHP, MySQL, SQL Server, PostgreSQL, XAMPP, Postman</div>
-                <div class="t-body">
-                  <ul>
-                    <li>Desarrollo de una API REST con PHP para operaciones CRUD seguras y estructuradas.</li>
-                    <li>Autenticación con manejo de sesiones, hashing de contraseñas y sanitización de datos.</li>
-                    <li>Implementación de roles (admin/usuario) con control de permisos en cada endpoint.</li>
-                    <li>Pruebas completas con Postman y conexión a múltiples motores de BD.</li>
-                    <li>Versión del sistema montada en máquinas virtuales para pruebas y despliegue.</li>
-                  </ul>
-                </div>
-              </div>
+  <div class="t-item">
+    <div class="t-title">Administrador en Ciberseguridad</div>
+    <div class="t-sub">Proyecto independiente — Marzo 2025 · Octubre 2025</div>
+    <div class="t-body">
+      <ul>
+        <li>Desarrollo de un servidor con sistema de login, API REST y gestión de roles de usuario.</li>
+        <li>Implementación de operaciones CRUD seguras utilizando PHP.</li>
+        <li>Autenticación con manejo de sesiones, hashing de contraseñas y sanitización de datos.</li>
+        <li>Control de acceso basado en roles (admin/usuario) en cada endpoint.</li>
+        <li>Integración con múltiples motores de base de datos: MySQL, SQL Server y PostgreSQL.</li>
+        <li>Pruebas completas de endpoints utilizando Postman.</li>
+        <li>Despliegue y pruebas del sistema en entornos virtualizados.</li>
+      </ul>
+    </div>
+  </div>
 
-              <div class="t-item">
-                <div class="t-title">Aplicación móvil básica en Android Studio</div>
-                <div class="t-sub">Java, Android Studio, SQLite</div>
-                <div class="t-body">
-                  <ul>
-                    <li>Creación de pantallas, manejo de actividades e implementación de navegación.</li>
-                    <li>Registro y almacenamiento local con SQLite.</li>
-                    <li>Interfaz optimizada para dispositivos móviles de gama media.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </article>
+  <div class="t-item">
+    <div class="t-title">Desarrollador</div>
+    <div class="t-sub">Proyecto independiente — Enero 2024 · Agosto 2024</div>
+    <div class="t-body">
+      <ul>
+        <li>Desarrollo de un sistema web de inventario con HTML, CSS, JavaScript, Java y MySQL.</li>
+        <li>Diseño del modelo de base de datos para productos, movimientos y usuarios.</li>
+        <li>Implementación de funcionalidades CRUD para control de inventario.</li>
+        <li>Validaciones, búsqueda dinámica y generación automática de reportes.</li>
+        <li>Integración con Java para lógica del sistema y procesamiento de datos.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="t-item">
+    <div class="t-title">Alorica — Walmart / T-Mobile</div>
+    <div class="t-sub">Soporte y ventas — Oct 2022 · Dic 2022 / Nov 2023</div>
+    <div class="t-body">
+      <ul>
+        <li>Ventas de líneas y seguimiento de envíos.</li>
+        <li>Manejo de información sensible en múltiples plataformas.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+         </article>
 
           <article class="right-card">
             <h2>Proyectos</h2>
