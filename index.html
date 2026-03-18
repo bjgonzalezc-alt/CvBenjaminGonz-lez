@@ -1,9 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- SEO -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Benjamín Josué González Cándido | CV">
+  <meta property="og:description" content="Software Engineer with experience in web development, database management, and project coordination.">
+  <meta property="og:image" content="https://bjgonzalezc-alt.github.io/CvBenjaminGonz-lez/foto.jpg">
+  <meta property="og:url" content="https://bjgonzalezc-alt.github.io/CvBenjaminGonz-lez/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CV — Benjamín Josué González Cándido">
+  <!--SOCIAL PREVIEW SHARING-->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@BenjaminGonzalez">
+  <meta name="twitter:creator" content="@BenjaminGonzalez">
+  <meta name="twitter:title" content="Benjamín Josué González Cándido | CV">
+  <meta name="twitter:description" content="Software Engineer with experience in web development, database management, and project coordination.">
+  <meta name="twitter:image" content="https://bjgonzalezc-alt.github.io/CvBenjaminGonz-lez/foto.jpg">
+  <meta name="description" content="Software Engineer with experience in web development, database management, and project coordination.">
+  <meta name="author" content="Benjamín Josué González Cándido">
+  
   <title>CV — Benjamín Josué González Cándido</title>
+
+  <!-- HANNA'S GIFT TO YOU MY LOVE <3 -->
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="favicon.svg">
+    
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -12,6 +34,9 @@
       --bg:#070111;
       --panel:rgba(21,10,35,.9);
       --card:rgba(15,10,30,.96);
+      --box-orange-1: rgba(124, 45, 18, .30);  /* deep orange */
+      --box-orange-2: rgba(249, 115, 22, .14); /* glow orange */
+      --box-orange-3: rgba(2, 6, 23, .55);     /* deep base */
 
       --text:#fff7ed;
       --muted:#fed7aa;
@@ -39,18 +64,69 @@
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
       color:var(--text);
-      background:
-        radial-gradient(80rem 50rem at 5% -10%, rgba(251,146,60,.32), transparent 60%),
-        radial-gradient(70rem 48rem at 110% 120%, rgba(250,204,21,.30), transparent 60%),
-        radial-gradient(90rem 55rem at 50% 120%, rgba(34,211,238,.18), transparent 60%),
-        linear-gradient(135deg,#020617 0%,#020012 40%,#050114 60%,#020617 100%);
+      background: #020012;
       -webkit-print-color-adjust:exact;
       print-color-adjust:exact;
       padding:26px 14px 34px;
       line-height:1.5;
       overflow-x:hidden;
-      background-attachment:fixed;
       font-size:13px;
+      position:relative;
+    }
+
+    /* ===== Fondo animado (zoom infinito sin “reinicio” visible) ===== */
+    .bg-zoom{
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .bg-zoom::before,
+    .bg-zoom::after{
+      content:"";
+      position:absolute;
+      inset:-10vmax;
+      background-image:url("assets/animated-bg.jpeg");
+      background-repeat:no-repeat;
+      background-position:50% 50%;
+      background-size:cover;
+      filter: saturate(132%) contrast(112%) brightness(1.26);
+      transform: translate3d(0,0,0) scale(1);
+      will-change: transform, opacity, filter;
+      animation: zoomLoop 20s linear infinite;
+      opacity:0;
+    }
+    .bg-zoom::after{
+      animation-delay:-10s; /* intercalado para que siempre haya un layer “en curso” */
+    }
+
+    .bg-overlay{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      background:
+        radial-gradient(70vmax 55vmax at 50% 25%, rgba(2,0,18,.08), rgba(2,0,18,.38) 60%, rgba(2,0,18,.58) 100%),
+        linear-gradient(180deg, rgba(2,0,18,.28), rgba(2,0,18,.54));
+    }
+
+    @keyframes zoomLoop{
+      0%{
+        transform: translate3d(0,0,0) scale(1.02);
+        opacity:0;
+      }
+      8%{ opacity:1; }
+      92%{ opacity:1; }
+      100%{
+        transform: translate3d(0,0,0) scale(1.32);
+        opacity:0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .bg-zoom::before,
+      .bg-zoom::after{ animation:none !important; opacity:1 !important; transform:scale(1.12) !important; }
     }
 
     .back-aura{
@@ -63,12 +139,14 @@
       background:radial-gradient(closest-side, rgba(251,146,60,.55), transparent 60%);
       animation:float 18s ease-in-out infinite alternate;
       mix-blend-mode:screen;
+      display:none;
     }
     .back-aura.b2{
       inset:auto auto -25vh -18vw;
       width:48vw;height:48vh;
       background:radial-gradient(closest-side, rgba(250,204,21,.55), transparent 60%);
       animation-duration:22s;
+      display:none;
     }
     @keyframes float{
       0%{transform:translate3d(0,0,0) scale(1)}
@@ -86,8 +164,9 @@
       align-items:center;
       padding:18px 20px;
       background:
-        linear-gradient(135deg, rgba(30,64,175,.25), rgba(15,23,42,.65)),
-        var(--panel);
+        radial-gradient(140% 120% at 0% 0%, var(--box-orange-2), transparent 55%),
+        linear-gradient(135deg, var(--box-orange-1), rgba(2,6,23,.65)),
+        rgba(2,6,23,.28);
       border:1px solid var(--border);
       border-radius:24px;
       box-shadow:var(--shadow);
@@ -110,7 +189,6 @@
       mask-composite: exclude;
       padding:2px;
     }
-    @keyframes spin{to{transform:rotate(360deg)}}
 
     .avatar{
       width:180px;height:180px;
@@ -175,7 +253,9 @@
       font-size:12px;
     }
     .tag{
-      background:linear-gradient(180deg, rgba(15,23,42,.95), rgba(15,23,42,.99));
+      background:
+        radial-gradient(140% 120% at 0% 0%, rgba(249,115,22,.16), transparent 55%),
+        linear-gradient(180deg, rgba(2,6,23,.30), rgba(2,6,23,.54));
       border:1px solid rgba(248,250,252,.6);
       padding:6px 10px;
       border-radius:999px;
@@ -231,9 +311,9 @@
 
     .card{
       background:
-        radial-gradient(circle at 0 0, rgba(251,146,60,.18), transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(250,204,21,.16), transparent 65%),
-        linear-gradient(180deg, rgba(15,23,42,.97), rgba(15,23,42,.99));
+        radial-gradient(circle at 0 0, var(--box-orange-2), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(250,204,21,.10), transparent 65%),
+        linear-gradient(180deg, rgba(2,6,23,.35), rgba(2,6,23,.58));
       border:1px solid rgba(248,250,252,.35);
       border-radius:18px;
       padding:14px 16px;
@@ -359,7 +439,9 @@
       border:1px dashed rgba(248,250,252,.75);
       border-radius:10px;
       padding:6px;
-      background:linear-gradient(180deg, rgba(15,23,42,.99), rgba(15,23,42,.96));
+      background:
+        radial-gradient(140% 120% at 0% 0%, rgba(249,115,22,.14), transparent 55%),
+        linear-gradient(180deg, rgba(2,6,23,.30), rgba(2,6,23,.54));
       color:#fffbeb;
       box-shadow:0 6px 16px rgba(15,23,42,.9);
     }
@@ -378,7 +460,9 @@
       gap:8px;
     }
     .info-card{
-      background:linear-gradient(145deg, rgba(15,23,42,.98), rgba(30,41,59,.96));
+      background:
+        radial-gradient(140% 120% at 0% 0%, rgba(249,115,22,.14), transparent 55%),
+        linear-gradient(145deg, rgba(2,6,23,.34), rgba(2,6,23,.56));
       border-radius:12px;
       border:1px solid rgba(248,250,252,.45);
       padding:8px 10px;
@@ -400,7 +484,9 @@
     }
 
     .right-card{
-      background:linear-gradient(180deg, rgba(15,23,42,.98), rgba(15,23,42,.99));
+      background:
+        radial-gradient(140% 120% at 0% 0%, rgba(249,115,22,.14), transparent 55%),
+        linear-gradient(180deg, rgba(2,6,23,.34), rgba(2,6,23,.56));
       border-radius:14px;
       border:1px solid rgba(248,250,252,.35);
       padding:8px 10px;
@@ -421,7 +507,9 @@
       border:1px solid rgba(248,250,252,.35);
       border-radius:12px;
       box-shadow:0 8px 18px rgba(15,23,42,.9);
-      background:rgba(15,23,42,.9);
+      background:
+        radial-gradient(140% 120% at 0% 0%, rgba(249,115,22,.14), transparent 55%),
+        linear-gradient(180deg, rgba(2,6,23,.34), rgba(2,6,23,.56));
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -458,7 +546,9 @@
       border:1px solid rgba(248,250,252,.35);
       border-radius:12px;
       box-shadow:0 8px 18px rgba(15,23,42,.9);
-      background:rgba(15,23,42,.9);
+      background:
+        radial-gradient(140% 120% at 0% 0%, rgba(249,115,22,.14), transparent 55%),
+        linear-gradient(180deg, rgba(2,6,23,.34), rgba(2,6,23,.56));
       padding:10px;
       display:flex;
       flex-direction:column;
@@ -482,7 +572,9 @@
       padding:3px 6px;
       font-size:11px;
       cursor:pointer;
-      background:rgba(15,23,42,.95);
+      background:
+        radial-gradient(140% 120% at 0% 0%, rgba(249,115,22,.18), transparent 55%),
+        linear-gradient(180deg, rgba(2,6,23,.42), rgba(2,6,23,.70));
       color:#facc15;
       box-shadow:0 0 0 1px rgba(248,250,252,.35);
     }
@@ -515,9 +607,11 @@
     line-height:1.45 !important;
     -webkit-print-color-adjust:exact !important;
     print-color-adjust:exact !important;
-    color-adjust:exact !important;
     color:#111 !important;
   }
+
+  .bg-zoom,
+  .bg-overlay{ display:none !important; }
 
   .back-aura{ display:none !important; }
 
@@ -671,6 +765,8 @@
 </head>
 
 <body>
+  <div class="bg-zoom" aria-hidden="true"></div>
+  <div class="bg-overlay" aria-hidden="true"></div>
   <div class="back-aura"></div>
   <div class="back-aura b2"></div>
 
@@ -757,6 +853,30 @@
             <tr><th>Bases de datos</th><td>MySQL, PostgreSQL, SQL Server</td></tr>
             <tr><th>Sistemas</th><td>Linux, Windows, Git/GitHub</td></tr>
             <tr><th>Seguridad</th><td>Fundamentos de hacking ético y OWASP básico</td></tr>
+          </table>
+        </div>
+
+        <div class="section">
+          <h2>Educación</h2>
+          <div class="timeline">
+            <div class="t-item">
+              <div class="t-title">Universidad San Pablo de Guatemala</div>
+              <div class="t-sub">Ing. en Sistemas y CC. de la Computación — Ene 2024 · Actualidad · 5to semestre</div>
+            </div>
+            <div class="t-item">
+              <div class="t-title">Centro Educativo Getsemaní</div>
+              <div class="t-sub">Bachillerato en Computación — Ene 2022 · Oct 2023</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Certificaciones & cursos</h2>
+          <table class="kv">
+            <tr><th>Project Management Foundations</th><td>LinkedIn Learning — Feb 2025</td></tr>
+            <tr><th>Mindfulness</th><td>LinkedIn Learning — Feb 2025</td></tr>
+            <tr><th>Communications within Teams</th><td>LinkedIn Learning — Feb 2025</td></tr>
+            <tr><th>Communication Foundations</th><td>LinkedIn Learning — Feb 2025</td></tr>
           </table>
         </div>
       </aside>
@@ -908,30 +1028,6 @@
                 VER IMAGEN EN GOOGLE DRIVE
               </a>
             </div>
-          </article>
-
-          <article class="right-card">
-            <h2>Educación</h2>
-            <div class="timeline">
-              <div class="t-item">
-                <div class="t-title">Universidad San Pablo de Guatemala</div>
-                <div class="t-sub">Ing. en Sistemas y CC. de la Computación — Ene 2024 · Actualidad · 5to semestre</div>
-              </div>
-              <div class="t-item">
-                <div class="t-title">Centro Educativo Getsemaní</div>
-                <div class="t-sub">Bachillerato en Computación — Ene 2022 · Oct 2023</div>
-              </div>
-            </div>
-          </article>
-
-          <article class="right-card">
-            <h2>Certificaciones & cursos</h2>
-            <table class="kv">
-              <tr><th>Project Management Foundations</th><td>LinkedIn Learning — Feb 2025</td></tr>
-              <tr><th>Mindfulness</th><td>LinkedIn Learning — Feb 2025</td></tr>
-              <tr><th>Communications within Teams</th><td>LinkedIn Learning — Feb 2025</td></tr>
-              <tr><th>Communication Foundations</th><td>LinkedIn Learning — Feb 2025</td></tr>
-            </table>
           </article>
 
           <article class="right-card full">
