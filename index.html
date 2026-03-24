@@ -139,14 +139,23 @@
       background:radial-gradient(closest-side, rgba(251,146,60,.55), transparent 60%);
       animation:float 18s ease-in-out infinite alternate;
       mix-blend-mode:screen;
-      display:none;
+      display:block;
+      pointer-events:none;
     }
     .back-aura.b2{
       inset:auto auto -25vh -18vw;
       width:48vw;height:48vh;
       background:radial-gradient(closest-side, rgba(250,204,21,.55), transparent 60%);
       animation-duration:22s;
-      display:none;
+      display:block;
+      pointer-events:none;
+    }
+
+    @media (max-width:920px) {
+      .back-aura,
+      .back-aura.b2 {
+        display:none;
+      }
     }
     @keyframes float{
       0%{transform:translate3d(0,0,0) scale(1)}
@@ -510,6 +519,7 @@
       padding:8px 10px;
       box-shadow:0 10px 22px rgba(15,23,42,.9);
     }
+
     .right-card.experiencia{
   grid-column: 1 / 2;
 }
@@ -522,6 +532,10 @@
     inset 0 0 20px rgba(251,146,60,.18),
     0 10px 22px rgba(15,23,42,.9);
   grid-column: 1 / -1;
+  max-height: none;
+  overflow: visible;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
     /* ============= VIDEO / IMAGEN PROYECTOS ============= */
@@ -557,6 +571,13 @@
       text-decoration:none;
       opacity:.85;
     }
+    .project-video,
+.project-image{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;  /* 🔥 centra vertical */
+  align-items:center;      /* centra horizontal */
+}
     .project-video a:hover,
     .project-image a:hover{
       opacity:1;
@@ -934,7 +955,7 @@
         </div>
 
         <div class="right-grid">
-<article class="right-card message-card" style="max-height: 140px; overflow: hidden;">
+          <article class="right-card message-card">
             <h2>Resumen profesional</h2>
             <p>
               Interés principal en el desarrollo de software, la administración de bases de datos y la ciberseguridad. Cuento con experiencia en proyectos académicos y
