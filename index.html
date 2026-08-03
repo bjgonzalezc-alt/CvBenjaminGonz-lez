@@ -636,6 +636,7 @@
 
     @media (max-width:720px){
       .project-video iframe{display:none;}
+      .project-image img.media{display:block;}
     }
 
 /* ===================== PRINT (PDF) ===================== */
@@ -1020,9 +1021,8 @@
       </ul>
     </div>
   </div>
-
 </div>
-         </article>
+</article>
 
           <article class="right-card">
             <h2>Proyectos</h2>
@@ -1067,6 +1067,20 @@
                 VER IMAGEN EN GOOGLE DRIVE
               </a>
             </div>
+            <div class="project-image" style="margin-top:12px;">
+              <button type="button" class="fullscreen-btn" onclick="verImagenPantallaCompleta2()">⤢</button>
+
+              <img
+                id="imgProyecto2"
+                src="imgProyecto2.png"
+                alt="Imagen del segundo proyecto"
+                loading="lazy"
+                decoding="async"
+                referrerpolicy="no-referrer">
+              <a href="#" target="_blank" rel="noopener noreferrer" id="linkProyecto2">
+                VER IMAGEN EN GOOGLE DRIVE
+              </a>
+            </div>
           </article>
 
           <article class="right-card full">
@@ -1088,6 +1102,19 @@
   <script>
     function verImagenPantallaCompleta() {
       var img = document.getElementById('imgProyecto');
+      if (!img) return;
+
+      if (img.requestFullscreen) {
+        img.requestFullscreen();
+      } else if (img.webkitRequestFullscreen) {
+        img.webkitRequestFullscreen();
+      } else if (img.msRequestFullscreen) {
+        img.msRequestFullscreen();
+      }
+    }
+
+    function verImagenPantallaCompleta2() {
+      var img = document.getElementById('imgProyecto2');
       if (!img) return;
 
       if (img.requestFullscreen) {
