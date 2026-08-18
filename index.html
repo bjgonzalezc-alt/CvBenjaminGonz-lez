@@ -337,8 +337,18 @@
     /* ============================================================
        GRID / CARD UTILITIES
        ============================================================ */
-    .two-col{ display:grid; grid-template-columns:1.1fr .9fr; gap:22px; align-items:start; }
-    @media (max-width:880px){ .two-col{ grid-template-columns:1fr; } }
+.two-col {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+@media (max-width: 880px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}
 
     .card{ padding:20px 22px; }
     .card h3{
@@ -455,30 +465,811 @@
     }
     .site-footer a{ color:var(--accent3); text-decoration:none; }
 
-    /* ============================================================
-       PRINT
-       ============================================================ */
-    @media print{
-      @page{ margin:14mm; }
-      html,body{ background:#fff !important; color:#111 !important; font-size:11px !important; }
-      .bg-zoom,.bg-overlay,.back-aura,.topbar,.hud-rail,.scroll-cue,.site-footer,.hero-ctas,.btn-ghost,.btn-solid{ display:none !important; }
-      .sec-hero{ min-height:0 !important; padding-top:0 !important; }
-      .sec{ padding:14px 0 !important; border-bottom:1px solid #e5e7eb !important; page-break-inside:avoid; }
-      .glass, .card{ background:#fff !important; border:1px solid #e5e7eb !important; box-shadow:none !important; backdrop-filter:none !important; }
-      .terminal{ display:none !important; }
-      h1.name{ color:#0f172a !important; text-shadow:none !important; }
-      .sec h2.title, .card h3{ color:#b45309 !important; -webkit-text-fill-color:#b45309 !important; background:none !important; filter:none !important; }
-      .eyebrow{ color:#b45309 !important; }
-      .eyebrow::before{ background:#b45309 !important; }
-      .kv th,.kv td{ color:#111 !important; border-bottom:1px solid #e5e7eb !important; }
-      .chip{ background:#fef3c7 !important; color:#111 !important; border:1px solid #f59e0b !important; box-shadow:none !important; }
-      .stat-chip{ background:#fff !important; border:1px solid #e5e7eb !important; }
-      .stat-num,.stat-label{ color:#111 !important; text-shadow:none !important; }
-      .proj-media{ display:none !important; }
-      .t-title,.cname{ color:#111 !important; }
-      .t-sub,.csrc,.role-line,.muted{ color:#555 !important; }
-      a{ color:inherit !important; text-decoration:none !important; }
-    }
+
+/* ============================================================
+   PDF — CV PROFESIONAL DE UNA SOLA PÁGINA A4
+   ============================================================ */
+
+@media print {
+
+  /* ============================================================
+     CONFIGURACIÓN GENERAL PDF
+     ============================================================ */
+
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    width: 210mm !important;
+    min-height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #fff !important;
+    color: #1f2937 !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 8.5pt !important;
+    line-height: 1.25 !important;
+
+    overflow: visible !important;
+  }
+
+  body {
+    position: relative !important;
+  }
+
+
+  /* ============================================================
+     OCULTAR ELEMENTOS DE LA WEB
+     ============================================================ */
+
+  .bg-zoom,
+  .bg-overlay,
+  .back-aura,
+  .topbar,
+  .hud-rail,
+  .scroll-cue,
+  .hero-eyebrow,
+  .terminal,
+  .hero-ctas,
+  .stats-strip,
+  #proyectos,
+  .proj-media,
+  .fullscreen-btn,
+  .site-footer {
+    display: none !important;
+  }
+
+
+  /* ============================================================
+     CONTENEDOR
+     ============================================================ */
+
+  main,
+  .wrap {
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .sec {
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    page-break-before: avoid !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+
+    break-before: avoid !important;
+    break-after: avoid !important;
+    break-inside: avoid !important;
+  }
+
+
+  /* ============================================================
+     ENCABEZADO
+     ============================================================ */
+
+  .sec-hero {
+    display: block !important;
+
+    min-height: 0 !important;
+    height: auto !important;
+
+    margin: 0 0 8px !important;
+    padding: 0 0 8px !important;
+
+    border-bottom: 2px solid #d97706 !important;
+  }
+
+  .hero-grid {
+    display: grid !important;
+
+    grid-template-columns: 92px 1fr !important;
+
+    gap: 15px !important;
+
+    align-items: center !important;
+
+    width: 100% !important;
+  }
+
+
+  /* ============================================================
+     FOTO
+     ============================================================ */
+
+  .avatar {
+    width: 92px !important;
+    height: 92px !important;
+
+    min-width: 92px !important;
+    min-height: 92px !important;
+
+    border-radius: 8px !important;
+
+    border: 1px solid #d1d5db !important;
+
+    background: #f3f4f6 !important;
+
+    box-shadow: none !important;
+
+    overflow: hidden !important;
+  }
+
+  .avatar::before {
+    display: none !important;
+  }
+
+  .avatar img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+
+    opacity: 1 !important;
+  }
+
+
+  /* ============================================================
+     NOMBRE
+     ============================================================ */
+
+  h1.name {
+    margin: 0 !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 22pt !important;
+    line-height: 1.05 !important;
+
+    font-weight: 700 !important;
+
+    color: #111827 !important;
+
+    background: none !important;
+    -webkit-text-fill-color: #111827 !important;
+
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
+  .role-line {
+    margin: 4px 0 0 !important;
+
+    font-size: 10pt !important;
+
+    line-height: 1.2 !important;
+
+    color: #4b5563 !important;
+
+    font-weight: 600 !important;
+  }
+
+  /* Contacto generado automáticamente desde CSS */
+  .sec-hero .hero-grid > div:last-child::after {
+    content:
+      "Guatemala · bennygonza2004@gmail.com · +502 4549-5038";
+
+    display: block !important;
+
+    margin-top: 5px !important;
+
+    font-size: 8pt !important;
+
+    line-height: 1.2 !important;
+
+    color: #6b7280 !important;
+  }
+
+
+  /* ============================================================
+     TÍTULOS DE SECCIÓN
+     ============================================================ */
+
+  .eyebrow {
+    display: none !important;
+  }
+
+  .sec h2.title {
+    display: block !important;
+
+    margin: 0 0 5px !important;
+    padding: 0 0 3px !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 11pt !important;
+    line-height: 1.1 !important;
+
+    font-weight: 700 !important;
+
+    color: #111827 !important;
+
+    background: none !important;
+    -webkit-text-fill-color: #111827 !important;
+
+    text-shadow: none !important;
+    filter: none !important;
+
+    border-bottom: 1px solid #d1d5db !important;
+  }
+
+
+  /* ============================================================
+     TARJETAS
+     ============================================================ */
+
+  .glass,
+  .card {
+    background: transparent !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    backdrop-filter: none !important;
+  }
+
+  .card {
+    padding: 0 !important;
+  }
+
+  .card h3 {
+    margin: 0 0 3px !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 7.5pt !important;
+
+    line-height: 1.1 !important;
+
+    font-weight: 700 !important;
+
+    text-transform: uppercase !important;
+
+    letter-spacing: .05em !important;
+
+    color: #b45309 !important;
+  }
+
+
+  /* ============================================================
+     PERFIL
+     ============================================================ */
+
+  #perfil {
+    margin-bottom: 7px !important;
+  }
+
+  #perfil .two-col {
+    display: grid !important;
+
+    grid-template-columns: 1.45fr .9fr !important;
+
+    gap: 14px !important;
+
+    align-items: start !important;
+  }
+
+  .lead {
+    font-size: 8.5pt !important;
+
+    line-height: 1.32 !important;
+
+    color: #374151 !important;
+  }
+
+  .lead p {
+    margin: 0 0 5px !important;
+  }
+
+  .lead p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+
+  /* ============================================================
+     OCULTAR ÁREAS CLAVE Y FORTALEZAS DEL PERFIL
+     PARA EVITAR DUPLICACIÓN CON HABILIDADES
+     ============================================================ */
+
+  #perfil .card:first-child h3:nth-of-type(2),
+  #perfil .card:first-child h3:nth-of-type(3),
+  #perfil .card:first-child .chips {
+    display: none !important;
+  }
+
+
+  /* ============================================================
+     TABLAS DE INFORMACIÓN
+     ============================================================ */
+
+  .kv {
+    width: 100% !important;
+
+    border-collapse: collapse !important;
+
+    font-size: 7.5pt !important;
+  }
+
+  .kv th,
+  .kv td {
+    padding: 2px 3px !important;
+
+    border-bottom: 1px solid #e5e7eb !important;
+
+    vertical-align: top !important;
+
+    line-height: 1.18 !important;
+  }
+
+  .kv th {
+    width: 35% !important;
+
+    color: #6b7280 !important;
+
+    font-weight: 500 !important;
+  }
+
+  .kv td {
+    color: #111827 !important;
+
+    font-weight: 600 !important;
+  }
+
+
+  /* ============================================================
+     INFORMACIÓN PROFESIONAL
+     ============================================================ */
+
+  #perfil .card:nth-child(2) > h3:nth-of-type(2),
+  #perfil .card:nth-child(2) > table:nth-of-type(2) {
+    display: none !important;
+  }
+
+  #perfil .card:nth-child(2) > h3:nth-of-type(3),
+  #perfil .card:nth-child(2) > table:nth-of-type(3) {
+    display: none !important;
+  }
+
+  #perfil .card:nth-child(2) > h3:nth-of-type(4),
+  #perfil .card:nth-child(2) > p {
+    display: none !important;
+  }
+
+
+  /* ============================================================
+     HABILIDADES
+     ============================================================ */
+
+  #habilidades {
+    margin: 0 0 7px !important;
+  }
+
+  .skill-grid {
+    display: grid !important;
+
+    grid-template-columns: repeat(3, 1fr) !important;
+
+    gap: 5px !important;
+  }
+
+  .skill-card {
+    padding: 5px !important;
+
+    border: 1px solid #e5e7eb !important;
+
+    border-radius: 4px !important;
+
+    background: #fafafa !important;
+
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .skill-card .icon {
+    display: none !important;
+  }
+
+  .skill-card h4 {
+    margin: 0 0 3px !important;
+
+    font-size: 7.5pt !important;
+
+    line-height: 1.1 !important;
+
+    color: #111827 !important;
+  }
+
+  .chips {
+    display: flex !important;
+
+    flex-wrap: wrap !important;
+
+    gap: 2px !important;
+
+    margin: 0 !important;
+  }
+
+  .chip {
+    padding: 2px 4px !important;
+
+    font-size: 6.5pt !important;
+
+    line-height: 1.05 !important;
+
+    border-radius: 10px !important;
+
+    background: #f9fafb !important;
+
+    border: 1px solid #d1d5db !important;
+
+    color: #374151 !important;
+
+    box-shadow: none !important;
+
+    white-space: nowrap !important;
+  }
+
+  .chip.cyan {
+    background: #f9fafb !important;
+
+    border-color: #d1d5db !important;
+
+    color: #374151 !important;
+  }
+
+
+  /* ============================================================
+     EXPERIENCIA
+     ============================================================ */
+
+  #experiencia {
+    margin: 0 0 7px !important;
+  }
+
+  #experiencia .glass.card {
+    padding: 0 !important;
+  }
+
+  .timeline {
+    position: relative !important;
+
+    padding-left: 12px !important;
+  }
+
+  .timeline::before {
+    left: 2px !important;
+
+    top: 2px !important;
+
+    bottom: 2px !important;
+
+    width: 1px !important;
+
+    background: #d1d5db !important;
+  }
+
+  .t-item {
+    position: relative !important;
+
+    padding-bottom: 5px !important;
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+  .t-item:last-child {
+    padding-bottom: 0 !important;
+  }
+
+  .t-item::before {
+    left: -13px !important;
+
+    top: 2px !important;
+
+    width: 5px !important;
+
+    height: 5px !important;
+
+    border: 0 !important;
+
+    background: #d97706 !important;
+
+    box-shadow: none !important;
+  }
+
+  .t-title {
+    font-size: 8pt !important;
+
+    line-height: 1.1 !important;
+
+    font-weight: 700 !important;
+
+    color: #111827 !important;
+  }
+
+  .t-sub {
+    margin-top: 1px !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 6.8pt !important;
+
+    line-height: 1.1 !important;
+
+    color: #6b7280 !important;
+  }
+
+  .t-body ul {
+    margin: 2px 0 0 !important;
+
+    padding-left: 12px !important;
+
+    font-size: 7pt !important;
+
+    line-height: 1.18 !important;
+
+    color: #374151 !important;
+  }
+
+  .t-body li {
+    margin-bottom: 1px !important;
+  }
+
+
+  /* ============================================================
+     EDUCACIÓN
+     ============================================================ */
+
+  #educacion {
+    margin: 0 0 7px !important;
+  }
+
+  #educacion .two-col {
+    display: grid !important;
+
+    grid-template-columns: 1fr 1fr !important;
+
+    gap: 14px !important;
+  }
+
+  #educacion .t-item {
+    padding-bottom: 4px !important;
+  }
+
+  #educacion .t-body {
+    display: none !important;
+  }
+
+  #educacion .t-title {
+    font-size: 7.8pt !important;
+  }
+
+  #educacion .t-sub {
+    font-size: 6.8pt !important;
+  }
+
+  .cert-list {
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    gap: 2px !important;
+  }
+
+  .cert-item {
+    display: flex !important;
+
+    justify-content: space-between !important;
+
+    gap: 8px !important;
+
+    padding: 3px 5px !important;
+
+    border: 1px solid #e5e7eb !important;
+
+    border-radius: 3px !important;
+
+    background: #fafafa !important;
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+  .cert-item .cname {
+    font-size: 6.8pt !important;
+
+    color: #111827 !important;
+  }
+
+  .cert-item .csrc {
+    font-size: 6.2pt !important;
+
+    color: #6b7280 !important;
+  }
+
+
+  /* ============================================================
+     CONTACTO
+     ============================================================ */
+
+  #contacto {
+    margin: 0 !important;
+
+    padding: 0 !important;
+  }
+
+  #contacto .eyebrow,
+  #contacto h2.title,
+  #contacto .contact-grid {
+    display: none !important;
+  }
+
+
+  /* ============================================================
+     REFERENCIAS
+     ============================================================ */
+
+  #contacto > .wrap > h3 {
+    display: block !important;
+
+    margin: 5px 0 4px !important;
+
+    padding-top: 5px !important;
+
+    border-top: 1.5px solid #d97706 !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 8pt !important;
+
+    line-height: 1.1 !important;
+
+    color: #111827 !important;
+  }
+
+  .refs {
+    display: grid !important;
+
+    grid-template-columns: repeat(3, 1fr) !important;
+
+    gap: 4px !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+  }
+
+  .ref-card {
+    display: block !important;
+
+    padding: 4px 5px !important;
+
+    border: 1px solid #e5e7eb !important;
+
+    border-radius: 4px !important;
+
+    background: #fafafa !important;
+
+    font-size: 6.8pt !important;
+
+    line-height: 1.15 !important;
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+  .ref-card strong {
+    font-size: 7pt !important;
+
+    color: #111827 !important;
+  }
+
+  .ref-card .muted {
+    display: block !important;
+
+    margin-top: 1px !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 6.2pt !important;
+
+    color: #6b7280 !important;
+  }
+
+
+  /* ============================================================
+     ANIMACIONES / REVEAL
+     ============================================================ */
+
+  .reveal {
+    opacity: 1 !important;
+
+    transform: none !important;
+
+    transition: none !important;
+  }
+
+
+  /* ============================================================
+     LINKS
+     ============================================================ */
+
+  a {
+    color: inherit !important;
+
+    text-decoration: none !important;
+  }
+
+
+  /* ============================================================
+     CONTROL DE SALTOS
+     ============================================================ */
+
+  #inicio,
+  #perfil,
+  #habilidades,
+  #experiencia,
+  #educacion,
+  #contacto,
+  .refs,
+  .skill-card,
+  .t-item,
+  .cert-item,
+  .ref-card {
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+
+  /* ============================================================
+     PIE DEL PDF
+     ============================================================ */
+
+  body::after {
+    content: "Benjamín Josué González Cándido · CV · 2026";
+
+    position: fixed !important;
+
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 1mm !important;
+
+    text-align: center !important;
+
+    font-size: 6pt !important;
+
+    color: #9ca3af !important;
+  }
+
+}
   </style>
 </head>
 
@@ -536,7 +1327,7 @@
           <div>
             <div class="hero-eyebrow">sistema://cv-benjamin-gonzalez <span class="blink">_</span></div>
             <h1 class="name">Benjamín Josué<br>González Cándido</h1>
-            <div class="role-line">Software Engineer en formación — Desarrollo, Bases de Datos &amp; Ciberseguridad</div>
+            <div class="role-line">Estudiante de Ingeniería en Sistemas</div>
 
             <div class="terminal" id="terminal" aria-hidden="true"></div>
 
@@ -550,7 +1341,7 @@
               <div class="stat-chip"><span class="stat-num">7°</span><span class="stat-label">Semestre</span></div>
               <div class="stat-chip"><span class="stat-num">C1</span><span class="stat-label">Inglés</span></div>
               <div class="stat-chip"><span class="stat-num">3+</span><span class="stat-label">Años exp.</span></div>
-              <div class="stat-chip"><span class="stat-num">3</span><span class="stat-label">Proyectos</span></div>
+              <div class="stat-chip"><span class="stat-num">3+</span><span class="stat-label">Proyectos</span></div>
             </div>
           </div>
         </div>
@@ -568,45 +1359,59 @@
           <div class="glass card reveal">
             <h3>Resumen profesional</h3>
             <div class="lead">
-              <p>
-                Interés principal en el desarrollo de software, la administración de bases de datos y la ciberseguridad.
-                Cuento con experiencia en proyectos académicos y colaboraciones con empresas, desarrollando sitios web
-                conectados a bases de datos MySQL, PostgreSQL y SQL Server, así como APIs funcionales en PHP.
-              </p>
-              <p>
-                Manejo JavaScript para desarrollo web y he trabajado en proyectos móviles utilizando Android Studio.
-                También cuento con experiencia en máquinas virtuales para entornos de prueba y despliegue, aplicando
-                buenas prácticas de autenticación, cifrado de información y configuración segura en sistemas Linux.
-              </p>
+<p>
+  Estudiante de Ingeniería en Sistemas y Ciencias de la Computación, con enfoque en desarrollo de software, automatización, bases de datos y ciberseguridad. Cuento con experiencia en proyectos académicos y colaboraciones con empresas, desarrollando aplicaciones web, APIs y soluciones conectadas a MySQL, PostgreSQL y SQL Server. He trabajado con Python, Java, JavaScript, PHP y C#, además de Android Studio, Linux y máquinas virtuales.
+</p>
+
+<p>
+  También cuento con experiencia profesional en atención y soporte al cliente, desempeñándome como Agente y posteriormente como SME (Subject Matter Expert), brindando apoyo a equipos, resolviendo casos complejos y orientando sobre procesos. Esta experiencia fortaleció mis habilidades de comunicación, liderazgo, resolución de problemas y trabajo bajo presión, complementando mi formación técnica y mi capacidad para adaptarme a diferentes entornos profesionales.
+</p>
+
+
             </div>
             <h3 style="margin-top:20px;">Áreas clave</h3>
             <div class="chips">
-              <span class="chip">Desarrollo web</span>
-              <span class="chip">Modelado de BD</span>
-              <span class="chip">Controles de seguridad básicos</span>
-              <span class="chip">Soporte al usuario final</span>
+         <span class="chip">Desarrollo de Software</span>
+         <span class="chip">Desarrollo Web y APIs</span>
+         <span class="chip">Bases de Datos y SQL</span>
+         <span class="chip">Seguridad de información</span>
             </div>
             <h3 style="margin-top:20px;">Fortalezas</h3>
-            <div class="chips">
-              <span class="chip cyan">Atención al cliente</span>
-              <span class="chip cyan">Resolución de problemas</span>
-              <span class="chip cyan">Liderazgo</span>
-              <span class="chip cyan">Mejora de procesos</span>
-              <span class="chip cyan">Trabajo bajo presión</span>
-              <span class="chip cyan">Coaching</span>
-              <span class="chip cyan">Trabajo en equipo</span>
-              <span class="chip cyan">Autoaprendizaje</span>
-            </div>
+<div class="chips">
+  <span class="chip cyan">Resolución de problemas</span>
+  <span class="chip cyan">Pensamiento analítico</span>
+  <span class="chip cyan">Trabajo en equipo</span>
+  <span class="chip cyan">Liderazgo</span>
+  <span class="chip cyan">Adaptabilidad</span>
+  <span class="chip cyan">Comunicación efectiva</span>
+  <span class="chip cyan">Gestión del tiempo</span>
+  <span class="chip cyan">Aprendizaje continuo</span>
+</div>
           </div>
 
           <div class="glass card reveal">
-            <h3>Datos personales</h3>
-            <table class="kv">
-              <tr><th>DPI</th><td>••••••••• 0101</td></tr>
-              <tr><th>Estado civil</th><td>Soltero</td></tr>
-              <tr><th>Nacionalidad</th><td>Guatemalteco</td></tr>
-              <tr><th>Dirección</th><td>San Lucas Sacatepéquez</td></tr>
-              <tr><th>Teléfono</th><td>4549-5038</td></tr>
+<h3>Datos personales</h3>
+<table class="kv">
+<tr><th>Perfil</th><td>Estudiante de Ingeniería en Sistemas</td></tr>
+<tr><th>Universidad</th><td>Universidad San Pablo de Guatemala</td></tr>
+<tr><th>Nivel</th><td>7.º semestre</td></tr>
+<tr><th>Enfoque</th><td>Software · Bases de Datos · Ciberseguridad</td></tr>
+<tr><th>Experiencia</th><td>Académica y profesional</td></tr>
+</table>
+<h3 style="margin-top:18px;">Información profesional</h3>
+<table class="kv">
+  <tr><th>Perfil</th><td>Desarrollador de Software Junior</td></tr>
+  <tr><th>Especialidad</th><td>Desarrollo Web y Backend</td></tr>
+  
+  <tr><th>Experiencia en tecnología</th><td>Desarrollo de aplicaciones web, APIs, bases de datos y aplicaciones móviles</td></tr>
+  
+<tr><th>Bases de datos</th><td>MySQL · PostgreSQL · SQL Server</td></tr>
+<tr><th>Lenguajes</th><td>Python · Java · JavaScript · C# · PHP</td></tr>
+<tr><th>Frontend</th><td>HTML5 · CSS3 · React</td></tr>
+<tr><th>Backend</th><td>PHP · Node.js · APIs</td></tr>
+<tr><th>Herramientas</th><td>Git · GitHub · Android Studio · Postman</td></tr>
+<tr><th>Soporte</th><td>Atención al cliente · Resolución de problemas</td></tr>
+</table>
             </table>
             <h3 style="margin-top:18px;">Idiomas</h3>
             <table class="kv">
@@ -615,7 +1420,7 @@
             </table>
             <h3 style="margin-top:18px;">Disponibilidad</h3>
             <p style="font-size:13px; color:var(--muted); margin:0;">
-              Modalidad remota o híbrida · Guatemala, GT · Abierto a prácticas y proyectos freelance.
+              Remota · Híbrida · Presencial | Guatemala, GT | Abierto a oportunidades laborales, prácticas y proyectos freelance.
             </p>
           </div>
         </div>
@@ -623,40 +1428,92 @@
     </section>
 
     <!-- ============ HABILIDADES ============ -->
-    <section id="habilidades" class="sec">
-      <div class="wrap">
-        <div class="eyebrow">// 03 — Stack</div>
-        <h2 class="title reveal">Habilidades técnicas</h2>
+   <section id="habilidades" class="sec">
+  <div class="wrap">
+    <div class="eyebrow">// 03 — Stack</div>
+    <h2 class="title reveal">Habilidades técnicas</h2>
 
-        <div class="skill-grid">
-          <div class="glass skill-card reveal">
-            <div class="icon">⌘</div>
-            <h4>Lenguajes</h4>
-            <div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">C#</span></div>
-          </div>
-          <div class="glass skill-card reveal">
-            <div class="icon">◧</div>
-            <h4>Web</h4>
-            <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JS</span><span class="chip">React (básico)</span><span class="chip">Node.js (básico)</span></div>
-          </div>
-          <div class="glass skill-card reveal">
-            <div class="icon">⛁</div>
-            <h4>Bases de datos</h4>
-            <div class="chips"><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">SQL Server</span></div>
-          </div>
-          <div class="glass skill-card reveal">
-            <div class="icon">⌨</div>
-            <h4>Sistemas</h4>
-            <div class="chips"><span class="chip">Linux</span><span class="chip">Windows</span><span class="chip">Git / GitHub</span></div>
-          </div>
-          <div class="glass skill-card reveal">
-            <div class="icon">◆</div>
-            <h4>Seguridad</h4>
-            <div class="chips"><span class="chip cyan">Fundamentos de hacking ético</span><span class="chip cyan">OWASP (básico)</span></div>
-          </div>
+    <div class="skill-grid">
+
+      <div class="glass skill-card reveal">
+        <div class="icon">⌘</div>
+        <h4>Lenguajes</h4>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Java</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">C#</span>
+          <span class="chip">PHP</span>
         </div>
       </div>
-    </section>
+
+      <div class="glass skill-card reveal">
+        <div class="icon">◧</div>
+        <h4>Web</h4>
+        <div class="chips">
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS3</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">React (básico)</span>
+          <span class="chip">Node.js (básico)</span>
+          <span class="chip">APIs REST</span>
+        </div>
+      </div>
+
+      <div class="glass skill-card reveal">
+        <div class="icon">⛁</div>
+        <h4>Bases de datos</h4>
+        <div class="chips">
+          <span class="chip">MySQL</span>
+          <span class="chip">PostgreSQL</span>
+          <span class="chip">SQL Server</span>
+          <span class="chip">phpMyAdmin</span>
+        </div>
+      </div>
+
+      <div class="glass skill-card reveal">
+        <div class="icon">⌨</div>
+        <h4>Sistemas y herramientas</h4>
+        <div class="chips">
+          <span class="chip">Linux</span>
+          <span class="chip">Windows</span>
+          <span class="chip">Git</span>
+          <span class="chip">GitHub</span>
+          <span class="chip">Postman</span>
+          <span class="chip">Android Studio</span>
+          <span class="chip">XAMPP</span>
+        </div>
+      </div>
+
+      <div class="glass skill-card reveal">
+        <div class="icon">◆</div>
+        <h4>Seguridad</h4>
+        <div class="chips">
+          <span class="chip cyan">Hacking ético (fundamentos)</span>
+          <span class="chip cyan">OWASP (básico)</span>
+          <span class="chip cyan">Autenticación</span>
+          <span class="chip cyan">Cifrado</span>
+        </div>
+      </div>
+
+      <div class="glass skill-card reveal">
+        <div class="icon">☁</div>
+        <h4>Colaboración y productividad</h4>
+        <div class="chips">
+          <span class="chip">Microsoft Teams</span>
+          <span class="chip">Google Chat</span>
+          <span class="chip">Gmail</span>
+          <span class="chip">Google Meet</span>
+          <span class="chip">Microsoft Outlook</span>
+          <span class="chip">Google Drive</span>
+          <span class="chip">Microsoft OneDrive</span>
+          <span class="chip">Microsoft 365</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <!-- ============ EXPERIENCIA ============ -->
     <section id="experiencia" class="sec">
@@ -884,12 +1741,12 @@
     (function(){
       var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var lines = [
-        '> whoami',
+        '> *QUIENSOY*',
         'Benjamín Josué González Cándido',
-        '> status --check',
+        '> ESTADO/-',
         '[ONLINE] Disponible para nuevas oportunidades',
-        '> stack --primary',
-        'Python · JavaScript · SQL · Seguridad'
+        '> /ENFOQUE--',
+        'CIBERSEGURIDAD · ADMINISTRACIÓN DE BASES DE DATOS · AUTOMATIZACIÓN · DESARROLLO WEB',
       ];
       var el = document.getElementById('terminal');
       if (!el) return;
@@ -943,25 +1800,82 @@
     })();
 
     // ---------- Active nav / HUD rail sync ----------
-    (function(){
-      var sections = document.querySelectorAll('main .sec');
-      var navLinks = document.querySelectorAll('[data-nav]');
-      var dots = document.querySelectorAll('[data-dot]');
-      if (!('IntersectionObserver' in window) || !sections.length) return;
+// ---------- Active nav / HUD rail sync ----------
+(function(){
+  var sections = document.querySelectorAll('main .sec');
+  var navLinks = document.querySelectorAll('[data-nav]');
+  var dots = document.querySelectorAll('[data-dot]');
 
-      function setActive(id){
-        navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
-        dots.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  if (!sections.length) return;
+
+  function setActive(id){
+    navLinks.forEach(function(a){
+      a.classList.toggle(
+        'active',
+        a.getAttribute('href') === '#' + id
+      );
+    });
+
+    dots.forEach(function(a){
+      a.classList.toggle(
+        'active',
+        a.getAttribute('href') === '#' + id
+      );
+    });
+  }
+
+  function updateActiveSection(){
+    var navHeight = 68;
+    var currentSection = null;
+    var closestDistance = Infinity;
+
+    sections.forEach(function(section){
+      var rect = section.getBoundingClientRect();
+
+      // Punto de referencia justo debajo del menú
+      var distance = Math.abs(rect.top - navHeight);
+
+      // Solo consideramos secciones que ya llegaron
+      // a la zona visible de navegación
+      if (rect.top <= navHeight + 120 && rect.bottom > navHeight){
+        if (distance < closestDistance){
+          closestDistance = distance;
+          currentSection = section;
+        }
       }
+    });
 
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (entry.isIntersecting){ setActive(entry.target.id); }
-        });
-      }, { threshold: 0.4, rootMargin: '-80px 0px -40% 0px' });
+    // Si ninguna sección cumple, usamos la primera
+    if (!currentSection){
+      currentSection = sections[0];
+    }
 
-      sections.forEach(function(s){ io.observe(s); });
-    })();
+    setActive(currentSection.id);
+  }
+
+  // Actualizar mientras se hace scroll
+  var ticking = false;
+
+  window.addEventListener('scroll', function(){
+    if (!ticking){
+      window.requestAnimationFrame(function(){
+        updateActiveSection();
+        ticking = false;
+      });
+
+      ticking = true;
+    }
+  }, { passive:true });
+
+  // También actualizar al cargar
+  window.addEventListener('load', updateActiveSection);
+
+  // Actualizar al cambiar tamaño de ventana
+  window.addEventListener('resize', updateActiveSection);
+
+  updateActiveSection();
+
+})();
   </script>
 </body>
 </html>
